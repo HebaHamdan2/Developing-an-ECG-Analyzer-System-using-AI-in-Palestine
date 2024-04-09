@@ -8,7 +8,7 @@ import Notfound from './components/Notfound/Notfound.jsx';
 import { useEffect } from 'react';
 import Protected from './components/Protected/Protected.jsx';
 import { AuthContextProvider } from './contexts/Auth.context.jsx';
-
+import { Toaster } from 'react-hot-toast';
 function App() {
   let checkLogin=localStorage.getItem('user');
   let routers=createBrowserRouter([
@@ -27,7 +27,7 @@ function App() {
     <AuthContextProvider>
     <RouterProvider router={routers}></RouterProvider> 
     </AuthContextProvider>
-   
+    <Toaster/>
     </>
   )
 }
