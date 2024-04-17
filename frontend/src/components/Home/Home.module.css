@@ -1,0 +1,42 @@
+.home{
+    font-family: "Playfair Display", serif;
+  
+  }
+  h1{
+    font-weight: 600;
+  }
+  .logo{
+    width: 25%;
+  }
+  .img{
+    width: 100%;
+  }
+  .ecg{
+    font-weight: 600;
+    /* font-style: italic; */
+    color:#212529d6;
+  }
+  p{
+font-size: 20px;
+color:#212529d6;
+font-weight: 400;
+  }
+  .controls {
+    text-justify: center;
+    margin-top: 30px !important;
+  }
+  .controls a{
+   text-decoration: none;
+   color: #f8f9fa;
+   padding:10px 25px;
+   background-color:#92dff0b8;
+   margin-right: 10px;
+   top: 10px;
+   font-weight: 900;
+   border-radius: 5px;
+   font-size: 20px;
+  }
+  .controls a:hover{
+    background-color:#92dff090;
+
+  }
