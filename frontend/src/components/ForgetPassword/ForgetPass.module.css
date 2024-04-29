@@ -1,0 +1,27 @@
+.forget{
+   font-family: "Playfair Display", serif;
+   overflow: hidden;
+}
+.logo{
+    width: auto;
+}
+.container{
+    width: 100%;
+}
+.reg input{
+    font-size: 20px;
+    font-weight: 200;
+}
+.check-gender{
+    cursor: pointer;
+}
+a,Link{
+	text-decoration: none;
+    color: #92dff0b8 !important;
+    font-weight: 900 !important;
+}
+.btnprimary{
+   background-color:  #92dff0b8;
+   color: white;
+   font-weight: 900 !important;
+}

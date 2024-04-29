@@ -8,7 +8,7 @@ export default function Home() {
         <Helmet>
     <meta charSet="utf-8" />
     <title>Home</title>
-   <meta name='Homae' content='this is homw page for ECG analyzer which is contain login and signup buttons' />
+   <meta name='Home' content='this is home page for ECG analyzer which is contain login and signup buttons' />
 </Helmet>
     <div  className={`${style.home}`}>
       <div className="container">

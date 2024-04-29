@@ -10,6 +10,8 @@ import Protected from './components/Protected/Protected.jsx';
 import { AuthContextProvider } from './contexts/Auth.context.jsx';
 import { Toaster } from 'react-hot-toast';
 import UploadImage from './components/UploadImage/UploadImage.jsx';
+import ForgetPassword from './components/ForgetPassword/SendCode.jsx';
+import ChangePassword from './components/ForgetPassword/ChangePassword.jsx';
 function App() {
   let checkLogin=localStorage.getItem('user');
   let routers=createBrowserRouter([
@@ -17,8 +19,11 @@ function App() {
    {index:true,element:checkLogin?<UploadImage/>:<Home/>},
    {path:'/home',element:checkLogin?<UploadImage/>:<Home/>},
    {path:'/uploadImage',element:<Protected><UploadImage/></Protected>},//to make sure that nobody can access this page except registered user
+  {path:'/test',element:<UploadImage/>},
    {path:'/login',element:checkLogin?<UploadImage/>:<Login/>},
    {path:'/signup',element:checkLogin?<UploadImage/>:<SignUp/>},
+   {path:'/forgetPassword',element:checkLogin?<UploadImage/>:<ForgetPassword/>},
+   {path:'/changePassword',element:checkLogin?<UploadImage/>:<ChangePassword/>},
    {path:'*',element:<Notfound/>}
     ]}
   ])
