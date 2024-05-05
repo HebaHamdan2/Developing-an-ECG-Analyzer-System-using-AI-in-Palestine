@@ -3,17 +3,19 @@ import style from  "./UploadImage.module.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import toast from "react-hot-toast";
 
 const FileUpload = () => {
   const inputRef = useRef();
 
   const [selectedFile, setSelectedFile] = useState(null);
-  const [progress, setProgress] = useState(0);
+  const [data, setData] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("select");
 
   const handleFileChange = (event) => {
     if (event.target.files && event.target.files.length > 0) {
-      setSelectedFile(event.target.files[0]);
+      setSelectedFile(URL.createObjectURL(event.target.files[0]));
+      setData(event.target.files[0])
     }
   };
 
@@ -24,7 +26,6 @@ const FileUpload = () => {
   const clearFileInput = () => {
     inputRef.current.value = "";
     setSelectedFile(null);
-    setProgress(0);
     setUploadStatus("select");
   };
 
@@ -38,24 +39,19 @@ const FileUpload = () => {
       setUploadStatus("uploading");
 
       const formData = new FormData();
-      formData.append("file", selectedFile);
+      formData.append("image", data);//nameof
 
-      // const response = await axios.post(
-      //   "http://localhost:8000/api/upload",
-      //   formData,
-      //   {
-      //     onUploadProgress: (progressEvent) => {
-      //       const percentCompleted = Math.round(
-      //         (progressEvent.loaded * 100) / progressEvent.total
-      //       );
-      //       setProgress(percentCompleted);
-      //     },
-      //   }
-      // );
-
+      const response = await axios.post(
+        "http://localhost:5000/image/insertImage",
+        formData).catch((err)=>{
+          console.log(err.response.data)
+          throw new Error(err.response.data.msg)
+           });
+  console.log(response.data.prediction)
       setUploadStatus("done");
     } catch (error) {
       setUploadStatus("select");
+      toast.error(error.message);
     }
   };
 
@@ -80,8 +76,11 @@ const FileUpload = () => {
     </button>
     <div className="collapse navbar-collapse " id="navbarNav">
       <ul className="navbar-nav ms-auto">
-        <li className="nav-item">
-          <Link className="nav-link" to="../signup">Logout</Link>
+      <li className={style.navitem}>
+          <Link to='../explanation' className="nav-link">Explanation</Link>
+        </li>
+        <li className={style.navitem}>
+          <button className="nav-link">Logout</button>
         </li>
       
   
@@ -98,53 +97,37 @@ const FileUpload = () => {
         onChange={handleFileChange}
         style={{ display: "none" }}
       />
-
-      {/* Button to trigger the file input dialog */}
       {!selectedFile && (
         <button className={style.filebtn} onClick={onChooseFile}>
-          <span className="material-symbols-outlined">upload</span> Upload File
+          <span className="material-symbols-outlined"><i class="fa-solid fa-file-arrow-up"> </i></span> 
+          <div>Upload ECG image</div>
         </button>
       )}
 
       {selectedFile && (
         <>
+
           <div className={style.filecard}>
-            <span className="material-symbols-outlined icon">description</span>
-
-            <div className={style.fileinfo}>
-              <div style={{ flex: 1 }}>
-                <h6>{selectedFile?.name}</h6>
-
-                <div className={style.progressbg}>
-                  <div className={style.progress} style={{ width: `${progress}%` }} />
-                </div>
-              </div>
-
+          <div className={style.fileinfo}>
               {uploadStatus === "select" ? (
                 <button onClick={clearFileInput}>
-                  <span class="material-symbols-outlined close-icon">
-                    close
+                  <span class={`material-symbols-outlined`}>
+                  <i class="fa-regular fa-circle-xmark"></i>
                   </span>
                 </button>
               ) : (
-                <div className="check-circle">
-                  {uploadStatus === "uploading" ? (
-                    `${progress}%`
-                  ) : uploadStatus === "done" ? (
-                    <span
-                      class="material-symbols-outlined"
-                      style={{ fontSize: "20px" }}
-                    >
-                      check
-                    </span>
-                  ) : null}
-                </div>
+             null
               )}
             </div>
-          </div>
-          <button className={style.uploadbtn} onClick={handleUpload}>
+            <div className={`material-symbols-outlined`}> <img className={style.image} src={selectedFile} alt="ecg"/></div>
+          
+            
+         
+      </div>
+      <button className={ `${style.uploadbtn} col-md-121`} onClick={handleUpload}>
             {uploadStatus === "select" || uploadStatus === 'uploading' ? "Upload" : "Done"}
-          </button>
+          </button> 
+       
         </>
       )}
     </div>

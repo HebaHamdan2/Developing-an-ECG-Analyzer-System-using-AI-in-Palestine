@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import style from './ForgetPass.module.css'
+import useChangePassword from '../../hooks/useChangePasswoed.js'
 export default function ChangePassword() {
+  const [inputs,setInputs]=useState({
+    email:'',
+    password:''
+   })
+  const{loading,changePassword}=useChangePassword()
+  const handleSubmit=async(e)=>{
+    e.preventDefault(); 
+    await changePassword(inputs);
+  }
   return (
     <>
     <Helmet>
@@ -24,34 +34,42 @@ export default function ChangePassword() {
           <div className="cardLog">
             <div className="cardLog-body">
               <div >
-                <form >
+                <form   onSubmit={handleSubmit}>
                 <div className="mb-3 ">
                     <label className="form-label">Verification Code</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
                       <input type="text" id="code" className="form-control  border-light bg-soft-light" placeholder="enter verification code" aria-label="Enter code" aria-describedby="basic-addon3"
-                          />
+                            value={inputs.code}
+                            onChange={(e)=> setInputs({...inputs,code:e.target.value})}
+                          
+                        />
                     </div>
                   </div>
                 <div className="mb-3">
-                    <label className="form-label">New Password</label>
+                    <label className="form-label">Email</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
-                      <input type="password" id="password" className="form-control  border-light bg-soft-light" placeholder="enter your new password" aria-label="Enter Password" aria-describedby="basic-addon4" 
-                     
+                      <input type="email" id="email" className="form-control  border-light bg-soft-light" placeholder="enter your email" aria-label="Enter Email" aria-describedby="basic-addon4" 
+                        value={inputs.email}
+                        onChange={(e)=> setInputs({...inputs,email:e.target.value})}
+                       
                       />
                     </div>
                   </div>
                   <div className="mb-3">
-                    <label className="form-label">Confirm Password</label>
+                    <label className="form-label">New Password</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
-                      <input type="password" id="cPassword" className="form-control  border-light bg-soft-light" placeholder="confirm password" aria-label="Enter Password" aria-describedby="basic-addon4" 
-                      />
+                      <input type="password" id="Password" className="form-control  border-light bg-soft-light" placeholder="enter your new password" aria-label="Enter Password" aria-describedby="basic-addon4" 
+                       value={inputs.password}
+                       onChange={(e)=> setInputs({...inputs,password:e.target.value})}
+                     
+                   />
                     </div>
                   </div>
             
                 
                   <div className="d-grid pt-2">
-                    <button className={ `${style.btnprimary} btn waves-effect waves-light`} type="submit" >
-                      Change Now </button>
+                    <button className={ `${style.btnprimary} btn waves-effect waves-light`} type="submit"  disabled={loading}  >
+                      Change  </button>
                   </div>
                 </form>
               

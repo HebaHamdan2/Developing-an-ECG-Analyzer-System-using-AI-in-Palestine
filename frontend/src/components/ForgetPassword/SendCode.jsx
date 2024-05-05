@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import style from './ForgetPass.module.css'
+import useSendCode from '../../hooks/useSendCode.js'
+import { useNavigate } from 'react-router-dom'
 export default function ForgetPassword() {
+  const [inputs,setInputs]=useState({
+    email:'',
+    password:''
+   })
+  const{loading,sendCode}=useSendCode()
+  let navigate= useNavigate();
+  const handleSubmit=async(e)=>{
+    e.preventDefault(); 
+    await sendCode(inputs);
+    navigate("../changePassword")
+  }
   return (
     <>
     <Helmet>
@@ -24,20 +37,22 @@ export default function ForgetPassword() {
           <div className="cardLog">
             <div className="cardLog-body">
               <div >
-                <form >
+                <form  onSubmit={handleSubmit} >
   
                   <div className="mb-3">
                     <label className="form-label">Email</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
                       <input type="email" id="email" className="form-control  border-light bg-soft-light" placeholder="enter your email to send code" aria-label="Enter Email" aria-describedby="basic-addon3" 
-            
+             value={inputs.email}
+             onChange={(e)=> setInputs({...inputs,email:e.target.value})}
+          
                       />
                     </div>
                   </div>
             
                 
                   <div className="d-grid pt-2">
-                    <button className={ `${style.btnprimary} btn waves-effect waves-light`} type="submit" >
+                    <button className={ `${style.btnprimary} btn waves-effect waves-light`} type="submit" disabled={loading} >
                       Send </button>
                   </div>
                 </form>

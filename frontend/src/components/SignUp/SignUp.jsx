@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link } from 'react-router-dom'
 import style from './SignUp.module.css'
 import CheckboxForSpec from './CheckboxForSpec.jsx'
+import useSignup from '../../hooks/useSignup.js'
 export default function SignUp() {
-
+  const [inputs,setInputs]=useState({
+    userName:'',
+    email:'',
+    password:'',
+    confirmPassword:'',
+    role:''
+   })
+   const{loading,signup}=useSignup();
+   const handleCheckboxChange=(role)=>{
+     setInputs({...inputs,role})
+   }
+   const handleSubmit=async(e)=>{
+ e.preventDefault();
+    await signup(inputs);
+   }
 
 
   return (
@@ -30,12 +45,15 @@ export default function SignUp() {
           <div className="cardLog">
             <div className="cardLog-body">
               <div >
-                <form >
+                <form  onSubmit={handleSubmit}>
   
                   <div className="mb-3">
                     <label className="form-label">Username</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
                       <input type="name" id="uname" className="form-control  border-light bg-soft-light" placeholder="enter username" aria-label="Enter userName" aria-describedby="basic-addon3"
+                         value={inputs.userName}
+                         onChange={(e)=> setInputs({...inputs,userName:e.target.value})}
+                       
                           />
                     </div>
                   </div>
@@ -43,7 +61,9 @@ export default function SignUp() {
                     <label className="form-label">Email</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
                       <input type="email" id="email" className="form-control  border-light bg-soft-light" placeholder="enter your email" aria-label="Enter Email" aria-describedby="basic-addon3" 
-            
+               value={inputs.email}
+               onChange={(e)=> setInputs({...inputs,email:e.target.value})}
+             
                       />
                     </div>
                   </div>
@@ -51,6 +71,8 @@ export default function SignUp() {
                     <label className="form-label">Password</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
                       <input type="password" id="password" className="form-control  border-light bg-soft-light" placeholder="enter password" aria-label="Enter Password" aria-describedby="basic-addon4" 
+                      value={inputs.password}
+                      onChange={(e)=> setInputs({...inputs,password:e.target.value})}
                      
                       />
                     </div>
@@ -59,13 +81,16 @@ export default function SignUp() {
                     <label className="form-label">Confirm Password</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
                       <input type="password" id="cPassword" className="form-control  border-light bg-soft-light" placeholder="confirm password" aria-label="Enter Password" aria-describedby="basic-addon4" 
-                      />
+                      value={inputs.confirmPassword}
+                      onChange={(e)=> setInputs({...inputs,confirmPassword:e.target.value})}
+                     
+                     />
                     </div>
                   </div>
                 
-              <CheckboxForSpec/>
+              <CheckboxForSpec onCheckboxChange={handleCheckboxChange} selectedGender={inputs.role}/>
                   <div className="d-grid pt-2">
-                    <button className={ `${style.btnprimary} btn waves-effect waves-light`} type="submit" >
+                    <button className={ `${style.btnprimary} btn waves-effect waves-light`} type="submit"  disabled={loading} >
                       Sign up</button>
                   </div>
                 </form>
@@ -74,7 +99,7 @@ export default function SignUp() {
             </div>
           </div>
           <div className="mt-1 text-center">
-            <p>Already have an account ? <Link to="../login" className="fw-medium">Log in</Link> </p>
+            <p>Already have an account ? <Link to="../login">Sign in</Link> </p>
             
           </div>
         </div>

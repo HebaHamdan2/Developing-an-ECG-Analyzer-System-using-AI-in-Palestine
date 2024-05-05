@@ -9,9 +9,14 @@
 .container{
     width: 100%;
 }
+.forgot{
+    
+    color: black !important;
+}
 .textForg{
     font-size: 15px;
     text-align: end;
+    color: black !important;
 }
 .textForg:hover{
     text-decoration: underline;
@@ -27,11 +32,17 @@
 }
 a,Link{
 	text-decoration: none;
-    color: #92dff0b8 !important;
+    color: #92dff0 !important;
     font-weight: 900 !important;
 }
 .btnprimary{
-   background-color:  #92dff0b8;
+   background-color:  #92dff0;
    color: white;
    font-weight: 900 !important;
+   font-size: 20px;
 }
+.btnprimary:hover{
+    background-color:#92dff090;
+    color: white;
+    font-weight: 900 !important;
+ }

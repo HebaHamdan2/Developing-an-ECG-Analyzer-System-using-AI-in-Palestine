@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import style from './Login.module.css'
+import useLogin from '../../hooks/useLogin.js'
 export default function Login() {
+  const [inputs,setInputs]=useState({
+    email:'',
+    password:''
+   })
+  const{loading,login}=useLogin()
+  let navigate= useNavigate();
+  const handleSubmit=async(e)=>{
+    e.preventDefault(); 
+    await login(inputs);
+    navigate("../uploadImage")
+  }
   return (
     <>
     <Helmet>
@@ -25,13 +37,15 @@ export default function Login() {
           <div className="cardLog">
             <div className="cardLog-body">
               <div >
-                <form >
+                <form onSubmit={handleSubmit} >
   
                   <div className="mb-3">
                     <label className="form-label">Email</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
                       <input type="email" id="email" className="form-control  border-light bg-soft-light" placeholder="enter your email" aria-label="Enter Email" aria-describedby="basic-addon3" 
-            
+              value={inputs.email}
+              onChange={(e)=> setInputs({...inputs,email:e.target.value})}
+           
                       />
                     </div>
                   </div>
@@ -39,17 +53,19 @@ export default function Login() {
                     <label className="form-label">Password</label>
                     <div className="input-group mb-1 bg-soft-light rounded-3">
                       <input type="password" id="password" className="form-control  border-light bg-soft-light" placeholder="enter your password" aria-label="Enter Password" aria-describedby="basic-addon4" 
-                     
+                       value={inputs.password}
+                       onChange={(e)=> setInputs({...inputs,password:e.target.value})}
+                   
                       />
                     </div>
                   </div>
                   <div className={style.textForg} >
-                  <Link to="../forgetPassword" className=' text-danger '>Forgot Password ?</Link>
+                  <Link to="../forgetPassword" className={style.forgot}>Forgot your password ?</Link>
                   </div>
                 
                 
                   <div className="d-grid pt-2">
-                    <button className={ `${style.btnprimary} btn waves-effect waves-light`} type="submit" >
+                    <button className={ `${style.btnprimary} btn waves-effect waves-light`} type="submit"  disabled={loading} >
                       Login</button>
                   </div>
                 </form>
@@ -58,7 +74,7 @@ export default function Login() {
             </div>
           </div>
           <div className="mt-3 text-center">
-            <p>Don't have an account ? <Link to="../signup" className="fw-medium">Sign up</Link> </p>
+            <p>Don't have an account ? <Link to="../signup" >Sign up</Link> </p>
             
           </div>
         </div>

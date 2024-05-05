@@ -12,6 +12,7 @@ import { Toaster } from 'react-hot-toast';
 import UploadImage from './components/UploadImage/UploadImage.jsx';
 import ForgetPassword from './components/ForgetPassword/SendCode.jsx';
 import ChangePassword from './components/ForgetPassword/ChangePassword.jsx';
+import Explanation from './components/Explanation/Explanation.jsx';
 function App() {
   let checkLogin=localStorage.getItem('user');
   let routers=createBrowserRouter([
@@ -24,6 +25,7 @@ function App() {
    {path:'/signup',element:checkLogin?<UploadImage/>:<SignUp/>},
    {path:'/forgetPassword',element:checkLogin?<UploadImage/>:<ForgetPassword/>},
    {path:'/changePassword',element:checkLogin?<UploadImage/>:<ChangePassword/>},
+   {path:'/explanation',element:<Explanation/>},//only students
    {path:'*',element:<Notfound/>}
     ]}
   ])
