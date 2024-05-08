@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import style from'./Explanation.module.css'
+import { AuthContext } from '../../contexts/Auth.context.jsx';
 export default function Explanation() {
+  let navigate=useNavigate();
+  let{setAuthUser}=useContext(AuthContext)
+  function logOut(){
+    localStorage.removeItem('user');
+    setAuthUser(null);
+    navigate('../login');
+  }
+
   return (
 <>
 <Helmet>
@@ -27,7 +36,7 @@ export default function Explanation() {
           <Link to='../uploadImage' className="nav-link">Home</Link>
         </li>
         <li className="nav-item">
-          <button className="nav-link">Logout</button>
+          <button className="nav-link" onClick={logOut}>Logout</button>
         </li>
       
   

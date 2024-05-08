@@ -49,23 +49,21 @@
     padding: 8px 15px;
   }
   
-  .fileinfo button,
-  .checkcircle {
+  .fileinfo button {
     font-size: 25px;
     color: #92dff0b8;
     background-color: white;
     border: none;
     border-radius: 30px;
+    margin-bottom: 450px !important;
   }
 .image{
   width: 100%;
 
 }
   .container {
-    height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 65%;
+    margin: auto;
   }
   .logo{
     width: 25%;

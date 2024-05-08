@@ -1,16 +1,25 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import style from  "./UploadImage.module.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
+import Loading from "../Loading/Loading.jsx";
+import { AuthContext } from "../../contexts/Auth.context.jsx";
 
 const FileUpload = () => {
   const inputRef = useRef();
-
+  let{setAuthUser}=useContext(AuthContext)
+  let{user}=useContext(AuthContext)
   const [selectedFile, setSelectedFile] = useState(null);
   const [data, setData] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("select");
+const[result,setResult]=useState('');
+    
+useEffect(() => {
+<Loading/>
+}, [data,result]);
+
 
   const handleFileChange = (event) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -18,6 +27,12 @@ const FileUpload = () => {
       setData(event.target.files[0])
     }
   };
+  let navigate=useNavigate();
+  function logOut(){
+    localStorage.removeItem('user');
+    setAuthUser(null);
+    navigate('../login');
+  }
 
   const onChooseFile = () => {
     inputRef.current.click();
@@ -26,6 +41,7 @@ const FileUpload = () => {
   const clearFileInput = () => {
     inputRef.current.value = "";
     setSelectedFile(null);
+    setResult(null)
     setUploadStatus("select");
   };
 
@@ -39,15 +55,14 @@ const FileUpload = () => {
       setUploadStatus("uploading");
 
       const formData = new FormData();
-      formData.append("image", data);//nameof
+      formData.append("image", data);
 
       const response = await axios.post(
         "http://localhost:5000/image/insertImage",
         formData).catch((err)=>{
-          console.log(err.response.data)
           throw new Error(err.response.data.msg)
            });
-  console.log(response.data.prediction)
+           setResult(response.data.prediction)
       setUploadStatus("done");
     } catch (error) {
       setUploadStatus("select");
@@ -80,7 +95,7 @@ const FileUpload = () => {
           <Link to='../explanation' className="nav-link">Explanation</Link>
         </li>
         <li className={style.navitem}>
-          <button className="nav-link">Logout</button>
+          <button className="nav-link" onClick={logOut}>Logout</button>
         </li>
       
   
@@ -109,11 +124,9 @@ const FileUpload = () => {
 
           <div className={style.filecard}>
           <div className={style.fileinfo}>
-              {uploadStatus === "select" ? (
+              {uploadStatus === "select" || "upload"? (
                 <button onClick={clearFileInput}>
-                  <span class={`material-symbols-outlined`}>
                   <i class="fa-regular fa-circle-xmark"></i>
-                  </span>
                 </button>
               ) : (
              null
@@ -124,15 +137,21 @@ const FileUpload = () => {
             
          
       </div>
-      <button className={ `${style.uploadbtn} col-md-121`} onClick={handleUpload}>
-            {uploadStatus === "select" || uploadStatus === 'uploading' ? "Upload" : "Done"}
-          </button> 
+      <div>
+     
+      </div>
+     
        
         </>
       )}
-    </div>
+          <button className={ `${style.uploadbtn}`} onClick={handleUpload}>
+            {uploadStatus === "select" || uploadStatus === 'uploading' ? "Upload" : "Done"}
+          </button> 
+<span>Result is:{user}</span>
     </div>
 
+    </div>
+  
     </>
    
   );
