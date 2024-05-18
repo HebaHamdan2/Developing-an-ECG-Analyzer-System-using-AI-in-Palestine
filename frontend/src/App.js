@@ -5,7 +5,6 @@ import Home from './components/Home/Home.jsx';
 import Login from './components/Login/Login.jsx';
 import SignUp from './components/SignUp/SignUp.jsx';
 import Notfound from './components/Notfound/Notfound.jsx';
-import { useEffect } from 'react';
 import Protected from './components/Protected/Protected.jsx';
 import { AuthContextProvider } from './contexts/Auth.context.jsx';
 import { Toaster } from 'react-hot-toast';
@@ -29,8 +28,7 @@ function App() {
    {path:'*',element:<Notfound/>}
     ]}
   ])
-  useEffect(()=>{
-  },[localStorage])
+
   return (
     <>
     <AuthContextProvider>

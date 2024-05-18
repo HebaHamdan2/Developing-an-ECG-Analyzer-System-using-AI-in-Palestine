@@ -21,7 +21,7 @@ setLoading(true)
       role
     }
     const {data}=await axios.post("http://localhost:5000/auth/signup",objData).catch((err)=>{
-      throw new Error(err.response.data.error)
+      throw new Error(err.response.data.message)
        })
     if(data.message==="success"){
    navigate("../login")

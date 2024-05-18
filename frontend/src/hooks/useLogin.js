@@ -3,7 +3,7 @@ import  { useContext, useState } from 'react'
 import toast from 'react-hot-toast';
 import { AuthContext } from '../contexts/Auth.context.jsx';
 import { useNavigate } from 'react-router-dom';
-
+import { jwtDecode } from "jwt-decode";
 export default function useLogin() {
   const [loading,setLoading]=useState(false);
   let{setAuthUser}=useContext(AuthContext)
@@ -22,7 +22,9 @@ if(!success)return;
              })
           if(data.message==="success"){
         localStorage.setItem("user",JSON.stringify(data))
-         setAuthUser(data)
+         let token=localStorage.getItem('user');
+         let user=jwtDecode(token);
+         setAuthUser(user);
          navigate("../uploadImage")
       } 
     }catch(error){

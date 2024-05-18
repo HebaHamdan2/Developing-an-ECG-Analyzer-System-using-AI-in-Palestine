@@ -13,10 +13,10 @@ sys.stdout.reconfigure(encoding='utf-8')
 model = tf.keras.models.load_model('C:/Users/Lenovo/OneDrive/Desktop/GraduationProj/backend/python/model/ECG-train.h5')
 
 # Define the class labels
-class_labels = ['ECG Image for Myocardial Infarction Patient',
-                'ECG Image for Patient that have abnormal heartbeat',
-                'ECG Image for Patient that have History of MI',
-                'ECG Image for Normal Person']
+class_labels = ['Myocardial Infarction',
+                'Abnormal heartbeat',
+                'History of Myocardial Infarction',
+                'Normal heartbeat']
 
 # Function to predict class of an image
 def predict_class(img_path):

@@ -8,7 +8,7 @@ export default function Explanation() {
   let{setAuthUser}=useContext(AuthContext)
   function logOut(){
     localStorage.removeItem('user');
-    setAuthUser(null);
+    setAuthUser('');
     navigate('../login');
   }
 

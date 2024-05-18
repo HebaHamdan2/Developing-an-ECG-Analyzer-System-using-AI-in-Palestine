@@ -1,25 +1,20 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import style from  "./UploadImage.module.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
-import Loading from "../Loading/Loading.jsx";
 import { AuthContext } from "../../contexts/Auth.context.jsx";
+import {jwtDecode} from "jwt-decode";
 
 const FileUpload = () => {
   const inputRef = useRef();
-  let{setAuthUser}=useContext(AuthContext)
-  let{user}=useContext(AuthContext)
+  let{setAuthUser,authUser}=useContext(AuthContext)
   const [selectedFile, setSelectedFile] = useState(null);
   const [data, setData] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("select");
 const[result,setResult]=useState('');
-    
-useEffect(() => {
-<Loading/>
-}, [data,result]);
-
+const getRole = jwtDecode(authUser.token,"login123").role;
 
   const handleFileChange = (event) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -30,7 +25,7 @@ useEffect(() => {
   let navigate=useNavigate();
   function logOut(){
     localStorage.removeItem('user');
-    setAuthUser(null);
+    setAuthUser('');
     navigate('../login');
   }
 
@@ -91,9 +86,10 @@ useEffect(() => {
     </button>
     <div className="collapse navbar-collapse " id="navbarNav">
       <ul className="navbar-nav ms-auto">
-      <li className={style.navitem}>
+        {getRole==="Student"?  <li className={style.navitem}>
           <Link to='../explanation' className="nav-link">Explanation</Link>
-        </li>
+        </li>:""}
+    
         <li className={style.navitem}>
           <button className="nav-link" onClick={logOut}>Logout</button>
         </li>
@@ -147,7 +143,7 @@ useEffect(() => {
           <button className={ `${style.uploadbtn}`} onClick={handleUpload}>
             {uploadStatus === "select" || uploadStatus === 'uploading' ? "Upload" : "Done"}
           </button> 
-<span>Result is:{user}</span>
+<span>Result is:{result}</span>
     </div>
 
     </div>
