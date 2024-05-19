@@ -26,7 +26,7 @@ const getRole = jwtDecode(authUser.token,"login123").role;
   function logOut(){
     localStorage.removeItem('user');
     setAuthUser('');
-    navigate('../login');
+    navigate('../home');
   }
 
   const onChooseFile = () => {
@@ -53,7 +53,7 @@ const getRole = jwtDecode(authUser.token,"login123").role;
       formData.append("image", data);
 
       const response = await axios.post(
-        "http://localhost:5000/image/insertImage",
+        "/image/insertImage",
         formData).catch((err)=>{
           throw new Error(err.response.data.msg)
            });

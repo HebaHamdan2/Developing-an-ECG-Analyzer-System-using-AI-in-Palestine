@@ -3,7 +3,6 @@ import  { useContext, useState } from 'react'
 import toast from 'react-hot-toast';
 import { AuthContext } from '../contexts/Auth.context.jsx';
 import { useNavigate } from 'react-router-dom';
-import { jwtDecode } from "jwt-decode";
 export default function useLogin() {
   const [loading,setLoading]=useState(false);
   let{setAuthUser}=useContext(AuthContext)
@@ -17,7 +16,7 @@ if(!success)return;
             email,
             password
           }
-          const {data}=await axios.post("http://localhost:5000/auth/signin",objData).catch((err)=>{
+          const {data}=await axios.post("/auth/signin",objData).catch((err)=>{
             throw new Error(err.response.data.message)
              })
           if(data.message==="success"){

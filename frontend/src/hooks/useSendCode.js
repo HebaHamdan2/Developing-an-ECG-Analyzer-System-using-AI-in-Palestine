@@ -14,7 +14,7 @@ if(!success)return;
         let objData={
             email
           }
-          const {data}=await axios.patch("http://localhost:5000/auth/sendCode",objData).catch((err)=>{
+          const {data}=await axios.patch("/auth/sendCode",objData).catch((err)=>{
             throw new Error(err.response.data.message)
              })
           if(data.message==="success"){

@@ -1,12 +1,10 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import toast from "react-hot-toast";
-import { AuthContext } from "../contexts/Auth.context.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function useSignup() {
 const [loading,setLoading]=useState(false);
-const {setAuthUser}=useContext(AuthContext);
 let navigate= useNavigate();
 const signup=async({userName,email,password,confirmPassword,role})=>{
 const success=handleInputErrors({userName,email,password,confirmPassword,role});
@@ -20,7 +18,7 @@ setLoading(true)
       password,
       role
     }
-    const {data}=await axios.post("http://localhost:5000/auth/signup",objData).catch((err)=>{
+    const {data}=await axios.post("/auth/signup",objData).catch((err)=>{
       throw new Error(err.response.data.message)
        })
     if(data.message==="success"){

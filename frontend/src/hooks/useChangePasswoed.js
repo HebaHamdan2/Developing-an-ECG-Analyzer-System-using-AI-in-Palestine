@@ -17,7 +17,7 @@ if(!success)return;
             password
 
           }
-          const {data}=await axios.patch("http://localhost:5000/auth/forgotPassword",objData).catch((err)=>{
+          const {data}=await axios.patch("/auth/forgotPassword",objData).catch((err)=>{
             throw new Error(err.response.data.message)
              })
           if(data.message==="success"){

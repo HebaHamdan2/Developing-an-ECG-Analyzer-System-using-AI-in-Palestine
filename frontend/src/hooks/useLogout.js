@@ -11,13 +11,13 @@ export default function useLogout() {
   const logout=async()=>{
     setLoading(true);
     try{
-        const {data}=await axios.post("auth/logout").catch((err)=>{
+        const {data}=await axios.post("/auth/logout").catch((err)=>{
             throw new Error(err.response.data.error)
              })
              if(data.message==="logged out successfully"){
-         localStorage.removeItem("chat-user");
+         localStorage.removeItem("user");
         setAuthUser(null)
-        navigate("../login")
+        navigate("../home")
              }      
     }catch(error){toast.error(error.message);}finally{
         setLoading(false);
