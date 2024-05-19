@@ -21,10 +21,8 @@ if(!success)return;
             throw new Error(err.response.data.message)
              })
           if(data.message==="success"){
-        localStorage.setItem("user",JSON.stringify(data))
-         let token=localStorage.getItem('user');
-         let user=jwtDecode(token);
-         setAuthUser(user);
+         localStorage.setItem("user",JSON.stringify(data))
+         setAuthUser(data)
          navigate("../uploadImage")
       } 
     }catch(error){

@@ -12,6 +12,7 @@ import UploadImage from './components/UploadImage/UploadImage.jsx';
 import ForgetPassword from './components/ForgetPassword/SendCode.jsx';
 import ChangePassword from './components/ForgetPassword/ChangePassword.jsx';
 import Explanation from './components/Explanation/Explanation.jsx';
+import { useEffect } from 'react';
 function App() {
   let checkLogin=localStorage.getItem('user');
   let routers=createBrowserRouter([
@@ -28,7 +29,7 @@ function App() {
    {path:'*',element:<Notfound/>}
     ]}
   ])
-
+useEffect(()=>{},{checkLogin})
   return (
     <>
     <AuthContextProvider>

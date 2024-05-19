@@ -140,9 +140,12 @@ const getRole = jwtDecode(authUser.token,"login123").role;
        
         </>
       )}
-          <button className={ `${style.uploadbtn}`} onClick={handleUpload}>
-            {uploadStatus === "select" || uploadStatus === 'uploading' ? "Upload" : "Done"}
-          </button> 
+      {uploadStatus==="select"?
+      <button className={ `${style.uploadbtn}`} onClick={handleUpload}>
+        Upload
+    </button> 
+      :""}
+          
 <span>Result is:{result}</span>
     </div>
 
