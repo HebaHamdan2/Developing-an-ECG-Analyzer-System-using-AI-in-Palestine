@@ -6,7 +6,7 @@ export const generalFields = {
     
     'string.empty': "email is required",
     
-    'string.email': "plz enter a valid email"
+    'string.email': "please enter a valid email"
     
     }),
     password:joi.string().required().min(3).messages({

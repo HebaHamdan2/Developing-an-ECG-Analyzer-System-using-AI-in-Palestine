@@ -2,7 +2,6 @@ import connectDB from '../../DB/connection.js';
 import authRouter from './auth/auth.router.js';
 
 import imageRouter from './image/image.router.js'
-//import { sendEmail } from '../services/email.js';
 import cors from 'cors';
 import { globalErrorHandler } from '../services/errorHandling.js';
 
