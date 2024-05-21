@@ -1,27 +1,53 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import style from './SignUp.module.css'
 import CheckboxForSpec from './CheckboxForSpec.jsx'
-import useSignup from '../../hooks/useSignup.js'
+import { useFormik } from 'formik'
+import axios from 'axios'
+import * as Yup from 'yup'    
+import toast from 'react-hot-toast'
 export default function SignUp() {
-  const [inputs,setInputs]=useState({
-    userName:'',
+  let [loading,setLoading]=useState(false);
+   const schema=Yup.object({
+    userName:Yup.string().required("name is required").min(3,"min is 3 characters").max(10,"max is 10 characters"),
+    email:Yup.string().required("email is required").email("not valid email"),
+    password:Yup.string().required("password is required"),
+    confirmPassword:Yup.string().required("Confirm Password").oneOf([Yup.ref('password')],"mismatch passwords")
+     ,role:Yup.string().required()
+  })
+  let formik = useFormik({
+    initialValues:{
+      userName:'',
     email:'',
     password:'',
     confirmPassword:'',
     role:''
-   })
-   const{loading,signup}=useSignup();
-   const handleCheckboxChange=(role)=>{
-     setInputs({...inputs,role})
-   }
-   const handleSubmit=async(e)=>{
- e.preventDefault();
-    await signup(inputs);
-   }
+    },validationSchema:schema,
+    onSubmit:register,
+})
+const handleCheckboxChange=(role)=>{
+  formik.values.role=role;
+}
+let navigate= useNavigate();
+async function register(values){
+setLoading(true)
+  try{
+  
+    const {data}=await axios.post("/auth/signup",values).catch((err)=>{
+     toast.error(err.response.data.message)
+       })
+    if(data.message==="success"){
+   navigate("../login")
+}   
 
+  } catch(error){
+    toast.error(error.data.validationArray[0]);
+  }finally{
+    setLoading(false)
+  }
 
+}
   return (
     <>
     <Helmet>
@@ -45,50 +71,77 @@ export default function SignUp() {
           <div className="cardLog">
             <div className="cardLog-body">
               <div >
-                <form  onSubmit={handleSubmit}>
-  
+                <form  onSubmit={formik.handleSubmit}>
+                <div className="w-50 m-auto">
+      
+        </div>
                   <div className="mb-3">
                     <label className="form-label">Username</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
-                      <input type="name" id="uname" className="form-control  border-light bg-soft-light" placeholder="enter username" aria-label="Enter userName" aria-describedby="basic-addon3"
-                         value={inputs.userName}
-                         onChange={(e)=> setInputs({...inputs,userName:e.target.value})}
-                       
+                      <input type="name" id="uname"placeholder="enter username" aria-label="Enter userName" aria-describedby="basic-addon3"
+                          value={formik.values.userName}
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          name='userName'
+                          className={`form-control  border-light bg-soft-light ${formik.errors.userName && formik.touched.userName? "is-invalid":""}`}
+             
                           />
-                    </div>
+                            </div>
+                            {formik.errors.userName && formik.touched.userName ? <div className='small text-danger'>{formik.errors.userName}</div>:<></>}
+              
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Email</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
-                      <input type="email" id="email" className="form-control  border-light bg-soft-light" placeholder="enter your email" aria-label="Enter Email" aria-describedby="basic-addon3" 
-               value={inputs.email}
-               onChange={(e)=> setInputs({...inputs,email:e.target.value})}
-             
+                      <input type="email" id="email" placeholder="enter your email" aria-label="Enter Email" aria-describedby="basic-addon3" 
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                name='email'
+                className={`form-control  border-light bg-soft-light ${formik.errors.email && formik.touched.email? "is-invalid":""}`}
+   
                       />
+                    
                     </div>
+                    {formik.errors.email && formik.touched.email ? <div className='small text-danger'>{formik.errors.email}</div>:<></>}
+            
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Password</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
-                      <input type="password" id="password" className="form-control  border-light bg-soft-light" placeholder="enter password" aria-label="Enter Password" aria-describedby="basic-addon4" 
-                      value={inputs.password}
-                      onChange={(e)=> setInputs({...inputs,password:e.target.value})}
-                     
-                      />
+                      <input type="password" id="password"  placeholder="enter password" aria-label="Enter Password" aria-describedby="basic-addon4" 
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    name='password'
+                    className={`form-control  border-light bg-soft-light ${formik.errors.password && formik.touched.password? "is-invalid":""}`}
+          />
+        
                     </div>
+                    {formik.errors.password && formik.touched.password ? <div className='small text-danger'>{formik.errors.password}</div>:<></>}
+           
                   </div>
                   <div className="mb-3">
                     <label className="form-label">Confirm Password</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
-                      <input type="password" id="cPassword" className="form-control  border-light bg-soft-light" placeholder="confirm password" aria-label="Enter Password" aria-describedby="basic-addon4" 
-                      value={inputs.confirmPassword}
-                      onChange={(e)=> setInputs({...inputs,confirmPassword:e.target.value})}
-                     
+                      <input type="password" id="cPassword" placeholder="confirm password" aria-label="Enter Password" aria-describedby="basic-addon4" 
+                      value={formik.values.confirmPassword}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      name='confirmPassword'
+                      className={`form-control  border-light bg-soft-light ${formik.errors.confirmPassword && formik.touched.confirmPassword? "is-invalid":""}`}
+  
                      />
+                 
                     </div>
+                    {formik.errors.confirmPassword && formik.touched.confirmPassword ? <div className='small text-danger'>{formik.errors.confirmPassword}</div>:<></>}
+            
                   </div>
                 
-              <CheckboxForSpec onCheckboxChange={handleCheckboxChange} selectedGender={inputs.role}/>
+              <CheckboxForSpec onCheckboxChange={handleCheckboxChange} selectedGender={formik.values.role}/>
+              {formik.errors.role && formik.touched.role ? <div className='small text-danger'>{formik.errors.role}</div>:<></>}
+            
+      
                   <div className="d-grid pt-2">
                     <button className={ `${style.btnprimary} btn waves-effect waves-light`} type="submit"  disabled={loading} >
                       Sign up</button>
@@ -111,93 +164,3 @@ export default function SignUp() {
    </>
   )
 }
-// import axios from 'axios'
-// import { useFormik } from 'formik'
-// import React, { useState } from 'react'
-// // import { regSchema } from '../schemas/register.jsx'
-// import { useNavigate } from 'react-router-dom'
-// import Header from '../Header/Header.jsx'
-// import * as Yup from 'yup';
-
-// export default function Register() {
-  
-// let [error, setError]= useState([])
-// let navigate= useNavigate()
-// const schema=Yup.object({
-//      userName:Yup.string().required("name is required").min(3,"min is 3 characters").max(10,"max is 10 characters"),
-//      email:Yup.string().required("email is required").email("not valid email"),
-//      password:Yup.string().required("password is required"),
-//      cPassword:Yup.string().required("confirm password is required").oneOf([Yup.ref('password')],"not match password")
-     
-//    })
-
-
-//     let register = async(values)=>{
- 
-//       let {data}=await axios.post('https://apiecommerce-hblh.onrender.com/auth/signup',values)
-//         if(data.message==="success"){
-//             console.log("registred");
-//             navigate('/login')
-//         }else{
-//             setError(data.err[0])
-
-//         }
-     
-//     }
-   
-
-
-// let {errors , values ,handleChange ,handleSubmit ,handleBlur , touched}  = useFormik({ 
-//   initialValues: {
-//     email:"",
-//     userName:"",
-//     password:"",
-//     cPassword:""
-//   },
-//   validationSchema: schema,
-//   onSubmit: register
-// })
-//   return (
-// <>
-//     <Header
-//     title="Create an acount"
-//     height="40"
-//     />
-//     <div className="container mt-5 pt-5">
-//     <form className='w-50 m-auto text-center mb-5 py-5 ' onSubmit={ handleSubmit}>
-//         {error.map((err)=>{
-//             return  <div className="alert alert-danger">{err.message}</div>
-//         })}
-
-//   <div className="mb-3">
-//     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-//     <input type="email"  id="exampleInputEmail1" 
-//      value={values.email} onChange={ handleChange}  name='email' aria-describedby="emailHelp" onBlur={handleBlur}
-//      className={form-control ${ errors.email && touched.email? "is-invalid":""}}/>
-//      { errors.email && touched.email? <div className='small text-danger'>{ errors.email} </div>:<></>}
-//   </div>
-//   <div className="mb-3">
-//     <label htmlFor="exampleInputName" className="form-label">Name</label>
-//     <input type="text"  id="exampleInputName"  value={values.userName} onChange={handleChange}  onBlur={handleBlur} name='userName' 
-//     className={form-control ${errors.userName && touched.userName? "is-invalid":""}}/>
-//     {errors.userName && touched.userName? <div className='small text-danger'>{errors.userName} </div>:<></>}
-//   </div>
-//   <div className="mb-3">
-//     <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-//     <input type="password"  id="exampleInputPassword1"  value={values.password} onChange={handleChange} onBlur={handleBlur} name='password'
-//     className={form-control ${errors.password && touched.password? "is-invalid":""}} />
-//     {errors.password && touched.password? <div className='small text-danger'>{errors.password} </div>:<></>}
-//   </div>
-//   <div className="mb-3">
-//     <label htmlFor="exampleInputPassword2" className="form-label">Confirm Password</label>
-//     <input type="password"  id="exampleInputPassword2"  value={values.cPassword} onChange={handleChange} onBlur={handleBlur} name='cPassword'
-//     className={form-control ${errors.cPassword && touched.cPassword? "is-invalid":""}}/>
-//     {errors.cPassword && touched.cPassword? <div className='small text-danger'>{errors.cPassword} </div>:<></>}
-//   </div>
-
-//   <button type="submit"  className="btn btn-primary">Submit</button>
-// </form>
-// </div>
-// </>
-//   )
-// }

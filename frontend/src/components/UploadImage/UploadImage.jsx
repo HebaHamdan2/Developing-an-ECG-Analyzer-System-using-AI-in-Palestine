@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import style from  "./UploadImage.module.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,7 +14,10 @@ const FileUpload = () => {
   const [data, setData] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("select");
 const[result,setResult]=useState('');
-const getRole = jwtDecode(authUser.token,"login123").role;
+const[Role,setRole]=useState('');
+useEffect(()=>{
+  setRole(jwtDecode(authUser.token,"login123").role);},[])
+
 
   const handleFileChange = (event) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -25,7 +28,7 @@ const getRole = jwtDecode(authUser.token,"login123").role;
   let navigate=useNavigate();
   function logOut(){
     localStorage.removeItem('user');
-    setAuthUser('');
+    setAuthUser(null);
     navigate('../home');
   }
 
@@ -86,7 +89,7 @@ const getRole = jwtDecode(authUser.token,"login123").role;
     </button>
     <div className="collapse navbar-collapse " id="navbarNav">
       <ul className="navbar-nav ms-auto">
-        {getRole==="Student"?  <li className={style.navitem}>
+        {Role==="Student"?  <li className={style.navitem}>
           <Link to='../explanation' className="nav-link">Explanation</Link>
         </li>:""}
     

@@ -13,12 +13,9 @@ import ForgetPassword from './components/ForgetPassword/SendCode.jsx';
 import ChangePassword from './components/ForgetPassword/ChangePassword.jsx';
 import Explanation from './components/Explanation/Explanation.jsx';
 import { useEffect } from 'react';
-import { jwtDecode } from 'jwt-decode';
 function App() {
-  let checkLogin=JSON.parse(localStorage.getItem('user'));
- let getRole="";
-  if(checkLogin){
-   getRole = jwtDecode(checkLogin.token,"login123").role;}
+  let checkLogin=JSON.parse(localStorage.getItem('user'))||"";
+ 
   let routers=createBrowserRouter([
     {path:'',element:<Layout/>,children:[
    {index:true,element:checkLogin?<UploadImage/>:<Home/>},
@@ -29,7 +26,7 @@ function App() {
    {path:'/signup',element:checkLogin?<UploadImage/>:<SignUp/>},
    {path:'/forgetPassword',element:checkLogin?<UploadImage/>:<ForgetPassword/>},
    {path:'/changePassword',element:checkLogin?<UploadImage/>:<ChangePassword/>},
-   {path:'/explanation',element:getRole==="Student"?<Explanation/>:<Protected><UploadImage/></Protected>},//only students
+   {path:'/explanation',element:checkLogin?<Explanation/>:<Home/>},//only students
    {path:'*',element:<Notfound/>}
     ]}
   ])

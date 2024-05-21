@@ -6,7 +6,7 @@ export default function CheckboxForSpec({onCheckboxChange,selectedRole}) {
 <div className="form-control check-gender w-60 border-0 bg-transparent d-flex text-align-center justify-content-around align-items-center">
 <span>I'm a :</span>
   <div className={`${selectedRole==="Student"?"selected":""} form-check check-role`}>
-    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" 
+    <input className="form-check-input " type="radio" name="flexRadioDefault" id="flexRadioDefault1" 
       checked={selectedRole==="Student"}
       onChange={()=> onCheckboxChange("Student")}
     />
