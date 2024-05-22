@@ -10,11 +10,14 @@ import toast from 'react-hot-toast'
 export default function SignUp() {
   let [loading,setLoading]=useState(false);
    const schema=Yup.object({
-    userName:Yup.string().required("name is required").min(3,"min is 3 characters").max(10,"max is 10 characters"),
-    email:Yup.string().required("email is required").email("not valid email"),
-    password:Yup.string().required("password is required"),
+    userName:Yup.string().required("User Name is required").min(4,"min is 4 characters").max(20,"max is 20 characters"),
+    email:Yup.string().required("Email is required").email("not valid email"),
+    password:Yup.string().required("Password is required").matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+    ),
     confirmPassword:Yup.string().required("Confirm Password").oneOf([Yup.ref('password')],"mismatch passwords")
-     ,role:Yup.string().required()
+     ,role:Yup.string().required("Please choose your role!")
   })
   let formik = useFormik({
     initialValues:{
@@ -35,14 +38,12 @@ setLoading(true)
   try{
   
     const {data}=await axios.post("/auth/signup",values).catch((err)=>{
+     
      toast.error(err.response.data.message)
        })
     if(data.message==="success"){
    navigate("../login")
-}   
-
-  } catch(error){
-    toast.error(error.data.validationArray[0]);
+} else{ toast.error(data.validationArray[0]);}
   }finally{
     setLoading(false)
   }
@@ -62,9 +63,9 @@ setLoading(true)
       <div className="box row justify-content-center">
         <div className="col-md-8 col-lg-6 col-xl-5  ">
           <div className="text-center mb-2">
-            <a href="/signup" className="auth-logo mb-3 d-block">
-              <img src="./assets/logo.jpg" alt="logo" height={90} className="logo logo-dark" />
-                  </a>
+            <Link to="/signup" className="auth-logo mb-3 d-block">
+              <img src="./assets/logo3.jpg" alt="logo" height={120} className="logo logo-dark" />
+                  </Link>
             <h4>Sign up</h4>
             <p className="text-muted mb-2">Get your ECG Analyzer account now.</p>
           </div>
@@ -139,6 +140,7 @@ setLoading(true)
                   </div>
                 
               <CheckboxForSpec onCheckboxChange={handleCheckboxChange} selectedGender={formik.values.role}/>
+             
               {formik.errors.role && formik.touched.role ? <div className='small text-danger'>{formik.errors.role}</div>:<></>}
             
       

@@ -1,20 +1,51 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link, useNavigate } from 'react-router-dom'
 import style from './Login.module.css'
-import useLogin from '../../hooks/useLogin.js'
+import { useFormik } from 'formik'
+import * as Yup from "yup"
+import axios from 'axios'
+import { AuthContext } from '../../contexts/Auth.context.jsx'
+import toast from 'react-hot-toast'
 export default function Login() {
-  const [inputs,setInputs]=useState({
+  
+  let{setAuthUser}=useContext(AuthContext)
+  let [loading,setLoading]=useState(false);
+  const schema=Yup.object({  
+      email:Yup.string().required("Email is required").email("not valid email"),
+    password:Yup.string().required("Password is required")
+  })
+  let formik = useFormik({
+    initialValues:{
     email:'',
     password:''
-   })
-  const{loading,login}=useLogin()
-  let navigate= useNavigate();
-  const handleSubmit=async(e)=>{
-    e.preventDefault(); 
-    await login(inputs);
-    navigate("../uploadImage")
-  }
+    },validationSchema:schema,
+    onSubmit:login,
+})
+let navigate= useNavigate();
+async function login(values){
+setLoading(true)
+setLoading(true)
+try{
+  
+      const {data}=await axios.post("/auth/signin",values).catch((err)=>
+        {
+          toast.error(err.response.data.message)
+         })
+      if(data.message==="success"){
+     localStorage.setItem("user",JSON.stringify(data))
+     setAuthUser(data)
+     navigate("../uploadImage")
+  }else{
+    toast.error(data.validationArray[0]);
+  } 
+
+}finally{
+    setLoading(false)
+}
+
+}
+
   return (
     <>
     <Helmet>
@@ -30,32 +61,40 @@ export default function Login() {
         <div className="col-md-8 col-lg-6 col-xl-5  ">
           <div className="text-center mb-2">
             <a href="/login" className="auth-logo mb-3 d-block">
-              <img src="./assets/logo.jpg" alt="logo" height={90} className="logo logo-dark" />
+              <img src="./assets/logo3.jpg" alt="logo" height={120} className="logo" />
                   </a>
             <h4 className='mb-5'>Sign in</h4>
           </div>
           <div className="cardLog">
             <div className="cardLog-body">
               <div >
-                <form onSubmit={handleSubmit} >
+                <form onSubmit={formik.handleSubmit} >
   
                   <div className="mb-3">
                     <label className="form-label">Email</label>
                     <div className="input-group mb-3 bg-soft-light rounded-3">
-                      <input type="email" id="email" className="form-control  border-light bg-soft-light" placeholder="enter your email" aria-label="Enter Email" aria-describedby="basic-addon3" 
-              value={inputs.email}
-              onChange={(e)=> setInputs({...inputs,email:e.target.value})}
-           
+                      <input type="email" id="email" placeholder="enter your email" aria-label="Enter Email" aria-describedby="basic-addon3" 
+               value={formik.values.email}
+               onChange={formik.handleChange}
+               onBlur={formik.handleBlur}
+               name='email'
+               className={`form-control  border-light bg-soft-light ${formik.errors.email && formik.touched.email? "is-invalid":""}`}
+  
                       />
+
                     </div>
+                    {formik.errors.email && formik.touched.email ? <div className='small text-danger'>{formik.errors.email}</div>:<></>}
                   </div>
                   <div className="mb-1">
                     <label className="form-label">Password</label>
                     <div className="input-group mb-1 bg-soft-light rounded-3">
-                      <input type="password" id="password" className="form-control  border-light bg-soft-light" placeholder="enter your password" aria-label="Enter Password" aria-describedby="basic-addon4" 
-                       value={inputs.password}
-                       onChange={(e)=> setInputs({...inputs,password:e.target.value})}
-                   
+                      <input type="password" id="password" placeholder="enter your password" aria-label="Enter Password" aria-describedby="basic-addon4" 
+                        value={formik.values.password}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        name='password'
+                        className={`form-control  border-light bg-soft-light ${formik.errors.password && formik.touched.password? "is-invalid":""}`}
+           
                       />
                     </div>
                   </div>

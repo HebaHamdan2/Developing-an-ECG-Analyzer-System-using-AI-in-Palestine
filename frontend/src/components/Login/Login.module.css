@@ -30,19 +30,19 @@
 .check-gender{
     cursor: pointer;
 }
-a,Link{
+/* a,Link{
 	text-decoration: none;
-    color: #92dff0 !important;
+    color: #cd3030 !important;
     font-weight: 900 !important;
-}
+} */
 .btnprimary{
-   background-color:  #92dff0;
+   background-color:  #cd3030;
    color: white;
    font-weight: 900 !important;
    font-size: 20px;
 }
 .btnprimary:hover{
-    background-color:#92dff090;
+    background-color:#cd303064;
     color: white;
     font-weight: 900 !important;
  }

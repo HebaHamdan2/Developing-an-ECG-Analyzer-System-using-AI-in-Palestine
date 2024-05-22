@@ -6,16 +6,12 @@
     font-weight: 600;
   } */
   .logo{
-    width: 25%;
+    width: 40%;
   }
   .img{
     width: 100%;
   }
-  .ecg{
-    font-weight: 600;
-    /* font-style: italic; */
-    color:#212529d6;
-  }
+ 
   p{
 font-size: 20px;
 color:#212529d6;
@@ -39,4 +35,7 @@ font-weight: 400;
   .controls a:hover{
     background-color:#92dff090;
 
+  }
+  .containerNav{
+    width: 100%;
   }

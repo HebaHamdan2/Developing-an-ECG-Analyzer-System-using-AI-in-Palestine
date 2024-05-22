@@ -13,10 +13,10 @@ export default function Home() {
     <div  className={`${style.home}`}>
       <div className="container">
       <nav className="navbar navbar-expand-lg  bg-transparent">
-  <div className="container-fluid">
+  <div className={`container-fluid ${style.containerNav}`}>
     <Link className="navbar-brand" to="../home">
-    <img  src="../../../assets/logo.jpg"  className={`${style.logo}`}  alt="logo" />
-    <span className={`${style.ecg} `}>ECG Analyzer</span>
+    <img  src="../../../assets/logo2.jpg"  className={`${style.logo}`}  alt="logo" />
+    {/* <span className={`${style.ecg} `}>ECG Analyzer</span> */}
     </Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon" />
