@@ -15,7 +15,7 @@ if(!success)return;
             email
           }
           const {data}=await axios.patch("/auth/sendCode",objData).catch((err)=>{
-            throw new Error(err.response.data.message)
+           toast.error(err.response.data.message)
              })
           if(data.message==="success"){
          navigate("../changePassword")

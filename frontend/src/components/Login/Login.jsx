@@ -61,7 +61,7 @@ try{
         <div className="col-md-8 col-lg-6 col-xl-5  ">
           <div className="text-center mb-2">
             <a href="/login" className="auth-logo mb-3 d-block">
-              <img src="./assets/logo3.jpg" alt="logo" height={120} className="logo" />
+              <img src="./assets/logo2cut.jpg" alt="logo" height={130} className="logo" />
                   </a>
             <h4 className='mb-5'>Sign in</h4>
           </div>

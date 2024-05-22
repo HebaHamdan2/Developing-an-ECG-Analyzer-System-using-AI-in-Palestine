@@ -18,13 +18,14 @@ if(!success)return;
 
           }
           const {data}=await axios.patch("/auth/forgotPassword",objData).catch((err)=>{
-            throw new Error(err.response.data.message)
+            toast.error(err.response.data.message)
              })
           if(data.message==="success"){
          navigate("../login")
-      } 
-    }catch(error){
-        toast.error(error.message);
+      }else{
+        toast.error(data.validationArray[0]);
+      }
+      
     }finally{
         setLoading(false)
     }

@@ -72,6 +72,7 @@
     border: none;
     padding: 10px;
     border-radius: 6px;
+    margin-top: 20px;
   }
   .fileinfo{
     display: flex;
@@ -94,25 +95,12 @@
     margin: auto;
   }
   .logo{
-    width: 40%;
+    width: 30%;
   }
   .img{
     width: 100%;
   }
 
-  
-  /* .uploadbtn {
-    width: 100px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #fff;
-    background-color: #92dff0;
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    margin-top: 15px;
-    cursor: pointer;
-  }  */
   .navitem button{
     text-decoration: none;
     color: white !important;

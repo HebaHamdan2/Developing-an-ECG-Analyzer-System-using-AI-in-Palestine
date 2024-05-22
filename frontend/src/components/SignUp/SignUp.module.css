@@ -16,19 +16,15 @@
 .check-gender{
     cursor: pointer;
 }
-/* a,Link{
-	text-decoration: none;
-    color: #cd3030 !important;
-    font-weight: 900 !important;
-} */
+
 .btnprimary{
-   background-color:  #cd3030;
+   background-color:  #92dff0;
    color: white;
    font-weight: 900 !important;
    font-size: 20px;
 }
 .btnprimary:hover{
-    background-color:#cd303064;
+    background-color:#92dff090;
     color: white;
     font-weight: 900 !important;
  }

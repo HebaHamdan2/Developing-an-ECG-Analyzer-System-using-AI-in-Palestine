@@ -64,7 +64,7 @@ setLoading(true)
         <div className="col-md-8 col-lg-6 col-xl-5  ">
           <div className="text-center mb-2">
             <Link to="/signup" className="auth-logo mb-3 d-block">
-              <img src="./assets/logo3.jpg" alt="logo" height={120} className="logo logo-dark" />
+              <img src="./assets/logo2cut.jpg" alt="logo" height={120} className="logo logo-dark" />
                   </Link>
             <h4>Sign up</h4>
             <p className="text-muted mb-2">Get your ECG Analyzer account now.</p>

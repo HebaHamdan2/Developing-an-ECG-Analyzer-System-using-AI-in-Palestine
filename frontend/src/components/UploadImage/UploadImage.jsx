@@ -65,15 +65,15 @@ useEffect(()=>{
 
       const formData = new FormData();
       formData.append("image", data);
-      let currentProgress = 0;
-      const incrementProgress = () => {
-        if (currentProgress < 50) {
-          currentProgress += 1;
-          setProgress(currentProgress);
-          setTimeout(incrementProgress, 180); // Increment by 1 every 180ms
-        }
-      };
-      incrementProgress();
+       let currentProgress = 0;
+      // const incrementProgress = () => {
+      //   if (currentProgress < 50) {
+      //     currentProgress += 1;
+      //     setProgress(currentProgress);
+      //     setTimeout(incrementProgress, 180); // Increment by 1 every 180ms
+      //   }
+      // };
+      // incrementProgress();
 
       const response = await axios.post(
         "/image/insertImage",
@@ -82,7 +82,7 @@ useEffect(()=>{
       // Function to simulate continuous progress to 100% after receiving response
       const continueProgress = (startProgress) => {
         return new Promise((resolve) => {
-          for (let i = startProgress; i <= 100; i++) {
+          for (let i = 0; i <= 100; i++) {
             setTimeout(() => {
               setProgress(i);
               if (i === 100) {
@@ -199,7 +199,7 @@ useEffect(()=>{
       )}
   
         <div className="check-circle">
-          {uploadStatus === "select"||"uploading" ? (
+          {uploadStatus ==="uploading" ? (
         <>
         <div className={style.progressbg}>
           <div className={style.progress} style={{ width: `${progress}%` }} />
