@@ -6,7 +6,7 @@ import Login from './components/Login/Login.jsx';
 import SignUp from './components/SignUp/SignUp.jsx';
 import Notfound from './components/Notfound/Notfound.jsx';
 import Protected from './components/Protected/Protected.jsx';
-import { AuthContext, AuthContextProvider } from './contexts/Auth.context.jsx';
+import { AuthContextProvider } from './contexts/Auth.context.jsx';
 import { Toaster } from 'react-hot-toast';
 import UploadImage from './components/UploadImage/UploadImage.jsx';
 import ForgetPassword from './components/ForgetPassword/SendCode.jsx';
@@ -20,12 +20,11 @@ function App() {
    {index:true,element:checkLogin?<UploadImage/>:<Home/>},
    {path:'/home',element:checkLogin?<UploadImage/>:<Home/>},
    {path:'/uploadImage',element:<Protected><UploadImage/></Protected>},//to make sure that nobody can access this page except registered user
-  {path:'/test',element:<UploadImage/>},
    {path:'/login',element:checkLogin?<UploadImage/>:<Login/>},
    {path:'/signup',element:checkLogin?<UploadImage/>:<SignUp/>},
    {path:'/forgetPassword',element:checkLogin?<UploadImage/>:<ForgetPassword/>},
    {path:'/changePassword',element:checkLogin?<UploadImage/>:<ChangePassword/>},
-   {path:'/explanation',element:<Explanation/>},//only students
+   {path:'/explanation',element:<Protected who="Student"><Explanation/></Protected>},//only students
    {path:'*',element:<Notfound/>}
     ]}
   ])

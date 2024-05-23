@@ -1,10 +1,12 @@
  .upload{
   font-family: "Playfair Display", serif;
-  margin-bottom: 5%;
+  background-color:#e4edf2cf;
+  padding-bottom:4%;
 
  }
  .containerNav{
   width: 85%;
+  margin-bottom: 2%;
 }
 .progressbg {
   width: 100%;
@@ -117,12 +119,17 @@
     border: 1px solid #92dff0 !important;
 
   }
+  .blk{
+    color: rgba(0, 0, 0, 0.737)!important;
+  }
   .navitem a,.navlink{
+    color: rgba(0, 0, 0, 0.737)!important;
     text-decoration: none;
     padding:10px 15px;
     margin-right: 10px;
     top: 10px;
     font-weight: 900;
+    background-color: white;
     border-radius: 6px;
     border: 1px solid #92dff0 !important;
   }

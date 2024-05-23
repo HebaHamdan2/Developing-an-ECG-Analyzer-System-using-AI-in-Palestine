@@ -7,6 +7,7 @@ import { useFormik } from 'formik'
 import axios from 'axios'
 import * as Yup from 'yup'    
 import toast from 'react-hot-toast'
+import Loading from '../Loading/Loading.jsx'
 export default function SignUp() {
   let [loading,setLoading]=useState(false);
    const schema=Yup.object({
@@ -56,113 +57,117 @@ setLoading(true)
                 <title>Signup</title>
                <meta name='signup' content='this is signup page for ECG Analyzer' />
             </Helmet>
-   <div className={`${style.reg}`}>
 
-  <div className="account-pages pt-sm-5">
-    <div className={`${style.container}`}>
-      <div className="box row justify-content-center">
-        <div className="col-md-8 col-lg-6 col-xl-5  ">
-          <div className="text-center mb-2">
-            <Link to="/signup" className="auth-logo mb-3 d-block">
-              <img src="./assets/logo2cut.jpg" alt="logo" height={120} className="logo logo-dark" />
-                  </Link>
-            <h4>Sign up</h4>
-            <p className="text-muted mb-2">Get your ECG Analyzer account now.</p>
-          </div>
-          <div className="cardLog">
-            <div className="cardLog-body">
-              <div >
-                <form  onSubmit={formik.handleSubmit}>
-                <div className="w-50 m-auto">
-      
-        </div>
-                  <div className="mb-3">
-                    <label className="form-label">Username</label>
-                    <div className="input-group mb-3 bg-soft-light rounded-3">
-                      <input type="name" id="uname"placeholder="enter username" aria-label="Enter userName" aria-describedby="basic-addon3"
-                          value={formik.values.userName}
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          name='userName'
-                          className={`form-control  border-light bg-soft-light ${formik.errors.userName && formik.touched.userName? "is-invalid":""}`}
-             
-                          />
-                            </div>
-                            {formik.errors.userName && formik.touched.userName ? <div className='small text-danger'>{formik.errors.userName}</div>:<></>}
+        {!loading?
+          <div className={`${style.reg}`}>
+
+          <div className="account-pages pt-sm-5">
+            <div className={`${style.container}`}>
+              <div className="box row justify-content-center">
+                <div className="col-md-8 col-lg-6 col-xl-5  ">
+                  <div className="text-center mb-2">
+                    <Link to="/signup" className="auth-logo mb-3 d-block">
+                      <img src="./assets/logo2cut.jpg" alt="logo" height={120} className="logo logo-dark" />
+                          </Link>
+                    <h4>Sign up</h4>
+                    <p className="text-muted mb-2">Get your ECG Analyzer account now.</p>
+                  </div>
+                  <div className="cardLog">
+                    <div className="cardLog-body">
+                      <div >
+                        <form  onSubmit={formik.handleSubmit}>
+                        <div className="w-50 m-auto">
               
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">Email</label>
-                    <div className="input-group mb-3 bg-soft-light rounded-3">
-                      <input type="email" id="email" placeholder="enter your email" aria-label="Enter Email" aria-describedby="basic-addon3" 
-                value={formik.values.email}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                name='email'
-                className={`form-control  border-light bg-soft-light ${formik.errors.email && formik.touched.email? "is-invalid":""}`}
-   
-                      />
-                    
-                    </div>
-                    {formik.errors.email && formik.touched.email ? <div className='small text-danger'>{formik.errors.email}</div>:<></>}
-            
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">Password</label>
-                    <div className="input-group mb-3 bg-soft-light rounded-3">
-                      <input type="password" id="password"  placeholder="enter password" aria-label="Enter Password" aria-describedby="basic-addon4" 
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    name='password'
-                    className={`form-control  border-light bg-soft-light ${formik.errors.password && formik.touched.password? "is-invalid":""}`}
-          />
-        
-                    </div>
-                    {formik.errors.password && formik.touched.password ? <div className='small text-danger'>{formik.errors.password}</div>:<></>}
+                </div>
+                          <div className="mb-3">
+                            <label className="form-label">Username</label>
+                            <div className="input-group mb-3 bg-soft-light rounded-3">
+                              <input type="name" id="uname"placeholder="enter username" aria-label="Enter userName" aria-describedby="basic-addon3"
+                                  value={formik.values.userName}
+                                  onChange={formik.handleChange}
+                                  onBlur={formik.handleBlur}
+                                  name='userName'
+                                  className={`form-control  border-light bg-soft-light ${formik.errors.userName && formik.touched.userName? "is-invalid":""}`}
+                     
+                                  />
+                                    </div>
+                                    {formik.errors.userName && formik.touched.userName ? <div className='small text-danger'>{formik.errors.userName}</div>:<></>}
+                      
+                          </div>
+                          <div className="mb-3">
+                            <label className="form-label">Email</label>
+                            <div className="input-group mb-3 bg-soft-light rounded-3">
+                              <input type="email" id="email" placeholder="enter your email" aria-label="Enter Email" aria-describedby="basic-addon3" 
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        name='email'
+                        className={`form-control  border-light bg-soft-light ${formik.errors.email && formik.touched.email? "is-invalid":""}`}
            
-                  </div>
-                  <div className="mb-3">
-                    <label className="form-label">Confirm Password</label>
-                    <div className="input-group mb-3 bg-soft-light rounded-3">
-                      <input type="password" id="cPassword" placeholder="confirm password" aria-label="Enter Password" aria-describedby="basic-addon4" 
-                      value={formik.values.confirmPassword}
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      name='confirmPassword'
-                      className={`form-control  border-light bg-soft-light ${formik.errors.confirmPassword && formik.touched.confirmPassword? "is-invalid":""}`}
-  
-                     />
-                 
-                    </div>
-                    {formik.errors.confirmPassword && formik.touched.confirmPassword ? <div className='small text-danger'>{formik.errors.confirmPassword}</div>:<></>}
-            
-                  </div>
+                              />
+                            
+                            </div>
+                            {formik.errors.email && formik.touched.email ? <div className='small text-danger'>{formik.errors.email}</div>:<></>}
+                    
+                          </div>
+                          <div className="mb-3">
+                            <label className="form-label">Password</label>
+                            <div className="input-group mb-3 bg-soft-light rounded-3">
+                              <input type="password" id="password"  placeholder="enter password" aria-label="Enter Password" aria-describedby="basic-addon4" 
+                            value={formik.values.password}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            name='password'
+                            className={`form-control  border-light bg-soft-light ${formik.errors.password && formik.touched.password? "is-invalid":""}`}
+                  />
                 
-              <CheckboxForSpec onCheckboxChange={handleCheckboxChange} selectedGender={formik.values.role}/>
-             
-              {formik.errors.role && formik.touched.role ? <div className='small text-danger'>{formik.errors.role}</div>:<></>}
-            
-      
-                  <div className="d-grid pt-2">
-                    <button className={ `${style.btnprimary} btn waves-effect waves-light`} type="submit"  disabled={loading} >
-                      Sign up</button>
-                  </div>
-                </form>
+                            </div>
+                            {formik.errors.password && formik.touched.password ? <div className='small text-danger'>{formik.errors.password}</div>:<></>}
+                   
+                          </div>
+                          <div className="mb-3">
+                            <label className="form-label">Confirm Password</label>
+                            <div className="input-group mb-3 bg-soft-light rounded-3">
+                              <input type="password" id="cPassword" placeholder="confirm password" aria-label="Enter Password" aria-describedby="basic-addon4" 
+                              value={formik.values.confirmPassword}
+                              onChange={formik.handleChange}
+                              onBlur={formik.handleBlur}
+                              name='confirmPassword'
+                              className={`form-control  border-light bg-soft-light ${formik.errors.confirmPassword && formik.touched.confirmPassword? "is-invalid":""}`}
+          
+                             />
+                         
+                            </div>
+                            {formik.errors.confirmPassword && formik.touched.confirmPassword ? <div className='small text-danger'>{formik.errors.confirmPassword}</div>:<></>}
+                    
+                          </div>
+                        
+                      <CheckboxForSpec onCheckboxChange={handleCheckboxChange} selectedGender={formik.values.role}/>
+                     
+                      {formik.errors.role && formik.touched.role ? <div className='small text-danger'>{formik.errors.role}</div>:<></>}
+                    
               
+                          <div className="d-grid pt-2">
+                            <button className={ `${style.btnprimary} btn waves-effect waves-light`} type="submit"  disabled={loading} >
+                              Sign up</button>
+                          </div>
+                        </form>
+                      
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-1 text-center">
+                    <p>Already have an account ? <Link to="../login">Sign in</Link> </p>
+                    
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="mt-1 text-center">
-            <p>Already have an account ? <Link to="../login">Sign in</Link> </p>
-            
-          </div>
+         
         </div>
-      </div>
-    </div>
-  </div>
+        :<Loading/>}    
  
-</div>
    </>
   )
 }

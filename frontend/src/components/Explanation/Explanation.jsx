@@ -1,14 +1,11 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Link, useNavigate } from 'react-router-dom'
 import style from'./Explanation.module.css'
-import { AuthContext } from '../../contexts/Auth.context.jsx';
 export default function Explanation() {
   let navigate=useNavigate();
-  let{setAuthUser}=useContext(AuthContext)
   function logOut(){
     localStorage.removeItem('user');
-    setAuthUser(null);
     navigate('../home');
   }
 

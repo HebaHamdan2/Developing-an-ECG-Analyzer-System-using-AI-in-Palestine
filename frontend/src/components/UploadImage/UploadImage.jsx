@@ -7,11 +7,13 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../../contexts/Auth.context.jsx";
 import {jwtDecode} from "jwt-decode";
 import Swal from "sweetalert2";
+import Loading from "../Loading/Loading.jsx";
 
-const FileUpload = () => {
+export default  function FileUpload () {
+  const [loading, setLoading] = useState(false)
   const inputRef = useRef();
   const [progress, setProgress] = useState(0);
-  let{setAuthUser,authUser}=useContext(AuthContext)
+  let{authUser}=useContext(AuthContext)
   const [selectedFile, setSelectedFile] = useState(null);
   const [data, setData] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("select");
@@ -37,9 +39,10 @@ useEffect(()=>{
   };
   let navigate=useNavigate();
   function logOut(){
+    setLoading(true)
     localStorage.removeItem('user');
-    setAuthUser(null);
     navigate('../home');
+    setLoading(false)
   }
 
   const onChooseFile = () => {
@@ -62,55 +65,44 @@ useEffect(()=>{
 
     try {
       setUploadStatus("uploading");
-
+    
       const formData = new FormData();
       formData.append("image", data);
-       let currentProgress = 0;
-      // const incrementProgress = () => {
-      //   if (currentProgress < 50) {
-      //     currentProgress += 1;
-      //     setProgress(currentProgress);
-      //     setTimeout(incrementProgress, 180); // Increment by 1 every 180ms
-      //   }
-      // };
-      // incrementProgress();
-
-      const response = await axios.post(
-        "/image/insertImage",
-        formData );
-
-      // Function to simulate continuous progress to 100% after receiving response
-      const continueProgress = (startProgress) => {
+      
+      let currentProgress = 0;
+      const incrementProgress = (start, end, duration) => {
         return new Promise((resolve) => {
-          for (let i = 0; i <= 100; i++) {
-            setTimeout(() => {
-              setProgress(i);
-              if (i === 100) {
-                resolve();
-              }
-            }, (i - startProgress) * 180); // Increment by 1 every 180ms
-          }
+          const stepTime = Math.abs(Math.floor(duration / (end - start)));
+          const timer = setInterval(() => {
+            if (currentProgress < end) {
+              currentProgress += 1;
+              setProgress(currentProgress);
+            } else {
+              clearInterval(timer);
+              resolve();
+            }
+          }, stepTime);
         });
       };
-
-      // Continue progress from the last recorded percentage
-      await continueProgress(currentProgress);
-
-      // Set the result after the progress has fully updated to 100%
+    
+      await incrementProgress(0, 50, 9000); // Simulate initial progress to 50% in 9 seconds
+    
+      const response = await axios.post("/image/insertImage", formData);
+    
+      await incrementProgress(50, 100, 9000); // Continue progress to 100% in 9 seconds
+    
       setResult(response.data.prediction);
       Swal.fire({
         title: 'Result!',
         text: response.data.prediction,
-        // icon: 'info',
         showConfirmButton: false,
-        // timer: 1500
-      })
+      });
     
       setUploadStatus("done");
-    }catch(err){
-        setUploadStatus("select")
-         toast.error(err.response.data.msg)
-           };
+    } catch (err) {
+      setUploadStatus("select");
+      toast.error(err.response.data.msg);
+    }
          
       
       setUploadStatus("done");
@@ -124,13 +116,15 @@ useEffect(()=>{
     <title>ECG Analyzer</title>
    <meta name='upload image' content='this is upload ecg image page to predict the result' />
 </Helmet>
-<div className={style.upload}>
+
+{!loading?
+  <div className={style.upload}>
         
         <div className=" container">
         <nav className="navbar navbar-expand-lg  bg-transparent">
   <div className={`container-fluid ${style.containerNav}`}>
     <Link className="navbar-brand" to="../uploadImage">
-    <img  src="../../../assets/logo2.jpg"  className={`${style.logo}`}  alt="logo" />
+    <img  src="../../../assets/logo2-removebg-preview.png"  className={`${style.logo}`}  alt="logo" />
     </Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon" />
@@ -162,7 +156,7 @@ useEffect(()=>{
       {!selectedFile && (
         <button className={style.filebtn} onClick={onChooseFile}>
           <span className="material-symbols-outlined"><i class="fa-solid fa-file-arrow-up"> </i></span> 
-          <div>Upload ECG image</div>
+          <div className={style.blk}>Upload ECG image</div>
         </button>
       )}
 
@@ -218,10 +212,10 @@ useEffect(()=>{
     </div>
 
     </div>
+:<Loading/>}
+
   
     </>
    
   );
 };
-
-export default FileUpload;

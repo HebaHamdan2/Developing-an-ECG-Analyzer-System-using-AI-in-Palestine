@@ -1,0 +1,41 @@
+.loader {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  background: #fff;
+  border-radius: 50%;
+  border-color: #92dff0;
+  overflow: hidden;
+}
+.loading{
+
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+ justify-content: center;
+ align-items: center;
+ display: flex;
+ z-index: 99999;
+}
+.loader:after{
+  content: '';
+  position: absolute;
+  inset: 8px;
+  margin: auto;
+  background: #222b32ac;
+   border-radius: 50%;
+}
+.loader:before{
+  content: '';
+  position: absolute;
+  inset: 0px;
+  margin: auto;
+  background: #92dff0;
+  animation: crlMugLoader 2s linear infinite alternate;
+}
+@keyframes crlMugLoader {
+  0%  ,10% { transform: translateY(64px) }
+  90% , 100% { transform: translateY(0px) }
+}
+    

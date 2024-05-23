@@ -2,22 +2,24 @@
     font-family: "Playfair Display", serif;
   
   }
-  /* h1{
+  h1{
     font-weight: 600;
-  } */
+  }
   .logo{
     width: 20%;
   }
+
   .img{
     width: 100%;
   }
  
   p{
-font-size: 20px;
+font-size: 24px;
 color:#212529d6;
 font-weight: 400;
   }
   .controls {
+   
     text-justify: center;
     margin-top: 30px !important;
   }
@@ -25,17 +27,21 @@ font-weight: 400;
    text-decoration: none;
    color: white !important;
    padding:10px 25px;
-   background-color:#92dff0;
-   margin-right: 10px;
+   background-color:#92dff0cd;
+   margin-left: 10px;
    top: 10px;
    font-weight: 900;
    border-radius: 5px;
    font-size: 20px;
   }
+  .controls a:first-child{
+    margin-left: 10px;
+  }
   .controls a:hover{
     background-color:#92dff090;
 
   }
+  
   .containerNav{
     width: 100%;
   }
