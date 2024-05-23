@@ -39,6 +39,7 @@ useEffect(()=>{
   };
   let navigate=useNavigate();
   function logOut(){
+    clearFileInput()
     setLoading(true)
     localStorage.removeItem('user');
     navigate('../home');
@@ -56,8 +57,7 @@ useEffect(()=>{
     setProgress(0);
     setUploadStatus("select");
   };
-
-  const handleUpload = async () => {
+const handleUpload = async () => {
     if (uploadStatus === "done") {
       clearFileInput();
       return;
@@ -65,10 +65,11 @@ useEffect(()=>{
 
     try {
       setUploadStatus("uploading");
-    
+      setProgress(0);
+
       const formData = new FormData();
       formData.append("image", data);
-      
+
       let currentProgress = 0;
       const incrementProgress = (start, end, duration) => {
         return new Promise((resolve) => {
@@ -84,30 +85,39 @@ useEffect(()=>{
           }, stepTime);
         });
       };
-    
-      await incrementProgress(0, 50, 9000); // Simulate initial progress to 50% in 9 seconds
-    
-      const response = await axios.post("/image/insertImage", formData);
-    
-      await incrementProgress(50, 100, 9000); // Continue progress to 100% in 9 seconds
-    
+
+      const config = {
+        onUploadProgress: (progressEvent) => {
+          const progress = Math.round((progressEvent.loaded * 50) / progressEvent.total); // Map upload progress to 50%
+          setProgress(progress);
+          currentProgress = progress;
+        }
+      };
+
+      const responsePromise = axios.post("/image/insertImage", formData, config);
+
+      // Simulate progress to 50% during upload
+      await incrementProgress(currentProgress, 50, 4500); // Adjust duration if necessary
+
+      const response = await responsePromise;
+
+      // Simulate progress from 50% to 100% after upload completes
+      await incrementProgress(50, 100, 4500); // Adjust duration if necessary
+
       setResult(response.data.prediction);
       Swal.fire({
         title: 'Result!',
         text: response.data.prediction,
         showConfirmButton: false,
       });
-    
+
       setUploadStatus("done");
     } catch (err) {
       setUploadStatus("select");
       toast.error(err.response.data.msg);
     }
-         
-      
-      setUploadStatus("done");
-          
   };
+
 
   return (
     <>
@@ -156,7 +166,7 @@ useEffect(()=>{
       {!selectedFile && (
         <button className={style.filebtn} onClick={onChooseFile}>
           <span className="material-symbols-outlined"><i class="fa-solid fa-file-arrow-up"> </i></span> 
-          <div className={style.blk}>Upload ECG image</div>
+          <div className={style.blk }>Upload ECG image</div>
         </button>
       )}
 
