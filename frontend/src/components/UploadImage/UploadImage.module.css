@@ -75,6 +75,8 @@
     padding: 10px;
     border-radius: 6px;
     margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: 900;
   }
   .fileinfo{
     display: flex;
@@ -103,38 +105,23 @@
     width: 100%;
   }
 
-  .navitem button{
-    text-decoration: none;
-    color: white !important;
-    padding:10px 10px !important;
-    background-color:#92dff0;
-    margin-right: 10px;
-    top: 10px;
-    font-weight: 600;
-    border-radius: 6px;
-  }
-  .navitem button:hover{
-    background-color:#92dff090;
-    color: white !important ;
-    border: 1px solid #92dff0 !important;
-
-  }
   .blk{
     color: rgba(0, 0, 0, 0.737)!important;
   }
-  .navitem a,.navlink{
+   
+ .navlink,.navitem button{
     color: rgba(0, 0, 0, 0.737)!important;
     text-decoration: none;
-    padding:10px 15px;
-    margin-right: 10px;
     top: 10px;
-    font-weight: 900;
-    background-color: white;
-    border-radius: 6px;
-    border: 1px solid #92dff0 !important;
+    text-transform: uppercase;
+    font-weight: 600;
   }
-  .navitem a:hover{
-    background-color:#92dff090;
-    color: white !important ;
-    border-radius: 6px;
+  
+  .navlinkstate{
+    color:  #92dff0 !important; 
+    text-transform: uppercase;
   }
+  .navlink:hover{
+    color:  #92dff0 !important;
+  }
+

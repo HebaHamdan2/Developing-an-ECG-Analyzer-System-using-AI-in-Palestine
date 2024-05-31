@@ -140,7 +140,10 @@ const handleUpload = async () => {
       <span className="navbar-toggler-icon" />
     </button>
     <div className="collapse navbar-collapse " id="navbarNav">
-      <ul className="navbar-nav ms-auto">
+      <ul className="navbar-nav">
+      <li className={style.navitem}>
+                <Link to='../uploadImage' className={`nav-link ${style.navlinkstate}`} >Home</Link>
+              </li>
         {Role==="Student"?  <li className={style.navitem}>
           <Link to='../explanation' className={`nav-link ${style.navlink}`}>Explanation</Link>
         </li>:""}
