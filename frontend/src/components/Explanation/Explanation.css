@@ -1,0 +1,80 @@
+.expla{
+    font-family: "Playfair Display", serif;
+    /* background-color: #e4edf2cf; */
+}
+.logo{
+    width: 20%;
+  }
+  .img{
+    width: 100%;
+  }
+
+  .carouselcontainer {
+  width: 70%;
+    margin: auto;
+  }
+  
+  .carousel.carousel-slider .control-arrow:hover{
+    background-color:rgba(0, 0, 0, 0.162) !important;
+  }
+  .carousel .slide img{
+width: 100px;
+height: 400px;
+  }
+  .sideNav {
+    background-color: white;
+    position: fixed;
+    top: 30px; /* Adjust the distance from the top as needed */
+    right: 0;
+    z-index: 999; /* Ensure it's above other elements */
+    height: 40vh; /* Adjust the height as needed */
+    width: 50px; /* Adjust the width as needed */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(85, 83, 83);
+    box-sizing: border-box;
+    transition: width 0.5s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    direction: none;
+    border-radius: 0px 10px;
+  }
+  
+  .sideNav nav {
+    margin-top: 50px; /* Adjust as needed */
+    width: 70px; /* Adjust as needed */
+    overflow: hidden;
+    transition: width 0.5s ease;
+  }
+  
+  .sideNav:hover nav {
+    width: 300px; /* Adjust as needed */
+  }
+  
+  .fas {
+    color: #281227cb;
+    font-size: 30px;
+    margin-right: 10px; /* Adjust as needed */
+  }
+  
+  .sideNav li {
+    margin-top: 23px;
+  }
+  
+  .sideNav .nav-item {
+    margin-left: 30px;
+    direction: none;
+    color: rgb(35, 33, 33);
+    text-decoration: none; /* Remove underline */
+  }
+  .sideNav nav a {
+    text-decoration: none !important; /* Remove underline */
+  }
+  .sideNav:hover {
+    width: 150px; /* Adjust as needed */
+    background: #eee;
+  }

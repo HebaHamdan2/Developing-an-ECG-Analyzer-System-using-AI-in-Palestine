@@ -1,73 +1,202 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link, useNavigate } from 'react-router-dom'
-import style from'./Explanation.module.css'
+import Loading from '../Loading/Loading.jsx'
+import { Carousel } from 'react-responsive-carousel';
+import './Explanation.css'
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 export default function Explanation() {
-  let navigate=useNavigate();
-  function logOut(){
-    localStorage.removeItem('user');
-    navigate('../home');
-  }
-
+  const [loading, setLoading] = useState(false)
+    let navigate=useNavigate();
+    function logOut(){
+      setLoading(true)
+      localStorage.removeItem('user');
+      navigate('../../home');
+      setLoading(false)
+    }
   return (
-<>
-<Helmet>
+    <>
+    <Helmet>
     <meta charSet="utf-8" />
     <title>Explanation</title>
-   <meta name='explanation' content='this is explanation page that contains information about diseases can be detect from the ecg image ' />
+   <meta name='Explanation' content='this is explanation page for ECG analyzer which only medical students can see' />
 </Helmet>
-<div className={style.expla}>
-<div className=" container">
-        <nav className="navbar navbar-expand-lg  bg-transparent">
-  <div className="container-fluid">
-    <Link className="navbar-brand" to="../explanation">
-    <img  src="../../../assets/logo2.jpg"  className={`${style.logo}`}  alt="logo" />
-    </Link>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon" />
-    </button>
-    <div className="collapse navbar-collapse " id="navbarNav">
-      <ul className="navbar-nav ms-auto">
-      <li className="nav-item">
-          <Link to='../uploadImage' className="nav-link">Home</Link>
-        </li>
-        <li className="nav-item">
-          <button className="nav-link" onClick={logOut}>Logout</button>
-        </li>
-      
-  
-      </ul>
-    </div>
-  </div>
-</nav>
-    <div className="d-flex row justify-content-between m-3 ">
-      <div className= { `${style.welcome} col-md-12`} >
-{/* <img src="../../../assets/home.jpg" className={style.img} alt="Rhythmical Excitation of the Heart" /> */}
-<h1>Welcome Student!</h1>
-      </div>
-      <div className="col-md-12">
-      <h2 className=' mb-4'>Rhythmical Excitation of the Heart</h2>
-       <p>The heart is endowed with
-a special system for <b> generating rhythmical electrical
-impulses to cause rhythmical contraction of the heart
-muscle</b> and <b>conducting these impulses rapidly
-through the heart.</b> <br/> When this system functions normally,
-the atria contract about one sixth of a second ahead of ventricular contraction, which allows filling of the ventricles
-before they pump the blood through the lungs and peripheral circulation.<br/> Another special importance of the system
-is that it allows all portions of the ventricles to contract
-almost simultaneously, which is essential for most effective pressure generation in the ventricular chambers.
-<br/>
-This rhythmical and conductive system of the heart
-is susceptible to damage by heart disease, especially by
-ischemia of the heart tissues resulting from poor coronary blood flow.<br/> The effect is often a bizarre heart rhythm
-or abnormal sequence of contraction of the heart chambers, and the pumping effectiveness of the heart often is
-affected severely, even to the extent of causing death.</p>
-      </div>
-      </div>   
-       
-        </div>
-</div>
+{!loading?
+    <div className='expla'> 
 
-</>
+      
+      <div className=" container">
+              <nav className="navbar navbar-expand-lg  bg-transparent">
+        <div className={`container-fluid containerNav`}>
+          <Link className="navbar-brand" to="../uploadImage">
+          <img  src="../../../assets/logo2-removebg-preview.png"  className='logo' alt="logo" />
+          </Link>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon" />
+          </button>
+          <div className="collapse navbar-collapse " id="navbarNav">
+            <ul className="navbar-nav ms-auto">
+              <li className='navitem'>
+                <Link to='../uploadImage' className={`nav-link navlink`}>Home</Link>
+              </li>
+              <li className='navitem'>
+                <button className="nav-link" onClick={logOut}>Logout</button>
+              </li>
+            
+        
+            </ul>
+          </div>
+        </div>
+      </nav>
+             
+             
+              </div>
+              <div className="sideNav">
+            <nav>
+            <li><a href="#normal">
+            {/* <ImAddressBook className='fas'/> */}
+                <span className='nav-item'>Normal</span>
+              </a></li>
+              <li><a href="#abnormal">
+                {/* <HiChatBubbleLeftRight className='fas'/> */}
+                <span className='nav-item'>Abnormal</span>
+              </a></li>
+              <li><a href="#HMI">
+                {/* <FaVoteYea className='fas'/> */}
+                <span className='nav-item'>History of Myocardial Infraction</span>
+              </a></li>
+              <li><a href="#MI">
+                {/* <IoCall className='fas'/> */}
+                <span className='nav-item'>Myocardial Infraction</span>
+              </a></li>
+            </nav>
+          </div>
+              <div class="inspiration" id="normal">
+      <div class=" pt-5 d-flex justify-content-center">
+        <div class="title position-relative  ">
+          <span class="text-uppercase border-bottom border-custom" >Let's Learn about!</span>
+          <h2>Normal ECG </h2>
+          </div>
+       </div></div>
+              <div className='carouselcontainer'>
+              <Carousel  autoPlay>
+      <div>
+        <img src="../../../assets/info/normal/no1.png" alt="Image1" />
+      </div>
+      <div>
+        <img src="../../../assets/info/normal/no2.png" alt="Image2" />
+      </div>
+      <div>
+        <img src="../../../assets/info/normal/no3.png" alt="Image3" />
+      </div>
+      <div>
+        <img src="../../../assets/info/normal/no5.png" alt="Image3" />
+      </div>
+      <div>
+        <img src="../../../assets/info/normal/6.jpg" alt="Image3" />
+      </div>
+      <div>
+        <img src="../../../assets/info/normal/normal4.png" alt="Image3" />
+      </div>
+    </Carousel>
+              
+              </div>
+              <div class="inspiration" id="abnormal">
+      <div class=" pt-5 d-flex justify-content-center">
+        <div class="title position-relative  ">
+          <span class="text-uppercase border-bottom border-custom" >Let's Learn about!</span>
+          <h2>Abnormal ECG </h2>
+          </div>
+       </div></div>
+              <div className='carouselcontainer'>
+              <Carousel infiniteLoop autoPlay>
+      <div>
+        <img src="../../../assets/info/abnormal/1.jpeg" alt="Image1" />
+      </div>
+      <div>
+        <img src="../../../assets/info/abnormal/2.jpeg" alt="Image2" />
+      </div>
+      <div>
+        <img src="../../../assets/info/abnormal/3.jpeg" alt="Image3" />
+      </div>
+      <div>
+        <img src="../../../assets/info/abnormal/4.jpeg" alt="Image3" />
+      </div>
+      <div>
+        <img src="../../../assets/info/abnormal/5.jpeg" alt="Image3" />
+      </div>
+    
+    </Carousel>
+              
+              </div>
+              <div class="inspiration" id="HMI">
+      <div class=" pt-5 d-flex justify-content-center">
+        <div class="title position-relative  ">
+          <span class="text-uppercase border-bottom border-custom" >Let's Learn about!</span>
+          <h2>History of Myocardial Infraction ECG </h2>
+          </div>
+       </div></div>
+              <div className='carouselcontainer'>
+              <Carousel infiniteLoop autoPlay>
+      <div>
+        <img src="../../../assets/info/HistoryMI/1.jpeg" alt="Image1" />
+      </div>
+      <div>
+        <img src="../../../assets/info/HistoryMI/2.jpeg" alt="Image2" />
+      </div>
+      <div>
+        <img src="../../../assets/info/HistoryMI/3.jpeg" alt="Image3" />
+      </div>
+      <div>
+        <img src="../../../assets/info/HistoryMI/4.jpg" alt="Image3" />
+      </div>
+      <div>
+        <img src="../../../assets/info/HistoryMI/5.jpg" alt="Image3" />
+      </div>
+      <div>
+        <img src="../../../assets/info/HistoryMI/6.jpg" alt="Image3" />
+      </div>
+    </Carousel>
+              
+              </div>
+              <div class="inspiration" id="MI">
+      <div class=" pt-5 d-flex justify-content-center">
+        <div class="title position-relative  ">
+          <span class="text-uppercase border-bottom border-custom" >Let's Learn about!</span>
+          <h2>Myocardial Infraction ECG </h2>
+          </div>
+       </div></div>
+              <div className='carouselcontainer'>
+              <Carousel infiniteLoop autoPlay>
+      <div>
+        <img src="../../../assets/info/MI/1.jpg" alt="Image1" />
+      </div>
+      <div>
+        <img src="../../../assets/info/MI/2.jpg" alt="Image2" />
+      </div>
+      <div>
+        <img src="../../../assets/info/MI/3.jpg" alt="Image3" />
+      </div>
+      <div>
+        <img src="../../../assets/info/MI/4.jpg" alt="Image3" />
+      </div>
+      <div>
+        <img src="../../../assets/info/MI/5.jpg" alt="Image3" />
+      </div>
+      <div>
+        <img src="../../../assets/info/MI/6.jpg" alt="Image3" />
+      </div>
+    </Carousel>
+              
+              </div>
+           
+ 
+
+
+      </div>
+:<Loading/>}
+
+
+    </>
   )
 }
