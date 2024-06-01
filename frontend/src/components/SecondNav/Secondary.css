@@ -3,16 +3,19 @@
   width: 50%;
   margin: auto;
   transition: all 0.3s;
-  background-color:#92dff094 ;
+  background-color:#d397f8a8 ;
 }
 
 .secnavbar.sticky {
   position: fixed;
+  width: 50%; /* Change this width as needed */
   top: 0;
-  width: 50%;
-  margin: auto !important;
+  left: 0;
+  right: 0;
+  margin: auto;
+text-align: center;
   z-index: 1000;
-  background-color:#92dff0e3 ;
+  background-color:#d397f8be !important;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 

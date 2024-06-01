@@ -17,7 +17,7 @@ export default function Explanation() {
     }
     useEffect(()=>{
 
-    },{loading,logOut})
+    },{loading})
   return (
     <>
     <Helmet>
