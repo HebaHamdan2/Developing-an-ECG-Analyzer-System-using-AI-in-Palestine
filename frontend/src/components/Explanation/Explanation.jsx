@@ -1,19 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link, useNavigate } from 'react-router-dom'
 import Loading from '../Loading/Loading.jsx'
 import { Carousel } from 'react-responsive-carousel';
 import './Explanation.css'
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Secondary from '../SecondNav/Secondary.jsx';
 export default function Explanation() {
   const [loading, setLoading] = useState(false)
     let navigate=useNavigate();
     function logOut(){
       setLoading(true)
       localStorage.removeItem('user');
-      navigate('../../home')
+      navigate('/home')
       setLoading(false)
     }
+    useEffect(()=>{
+
+    },{loading,logOut})
   return (
     <>
     <Helmet>
@@ -23,10 +27,8 @@ export default function Explanation() {
 </Helmet>
 {!loading?
     <div className='expla'> 
-
-      
       <div className=" container">
-              <nav className="navbar navbar-expand-lg  bg-transparent">
+              <nav className="navbar navbar-expand-lg navbar bg-transparent ">
         <div className={`container-fluid containerNav`}>
           <Link className="navbar-brand" to="#">
           <img  src="../../../assets/logo2-removebg-preview.png"  className='logo' alt="logo" />
@@ -51,30 +53,12 @@ export default function Explanation() {
           </div>
         </div>
       </nav>
-             
-             
+      <Secondary/>
               </div>
-              <div className="sideNav">
-            <nav>
-            <li><a href="#normal">
-            {/* <ImAddressBook className='fas'/> */}
-                <span className='nav-item'>Normal ECG</span>
-              </a></li>
-              <li><a href="#abnormal">
-                {/* <HiChatBubbleLeftRight className='fas'/> */}
-                <span className='nav-item'>Abnormal ECG</span>
-              </a></li>
-              <li><a href="#HMI">
-                {/* <FaVoteYea className='fas'/> */}
-                <span className='nav-item'>History of MI ECG</span>
-              </a></li>
-              <li><a href="#MI">
-                {/* <IoCall className='fas'/> */}
-                <span className='nav-item'>MI ECG</span>
-              </a></li>
-            </nav>
-          </div>
-              <div class="inspiration" id="normal">
+          
+      
+        
+          <div class="inspiration" id="normal">
       <div class=" pt-5 d-flex justify-content-center">
         <div class="title position-relative  ">
           <span class="text-uppercase border-bottom border-custom" >Let's Learn about!</span>
@@ -82,7 +66,7 @@ export default function Explanation() {
           </div>
        </div></div>
               <div className='carouselcontainer'>
-              <Carousel  autoPlay>
+              <Carousel  infiniteLoop>
       <div>
         <img src="../../../assets/info/normal/no1.png" alt="Image1" />
       </div>
@@ -112,7 +96,7 @@ export default function Explanation() {
           </div>
        </div></div>
               <div className='carouselcontainer'>
-              <Carousel infiniteLoop autoPlay>
+              <Carousel infiniteLoop>
       <div>
         <img src="../../../assets/info/abnormal/1.jpeg" alt="Image1" />
       </div>
@@ -140,7 +124,7 @@ export default function Explanation() {
           </div>
        </div></div>
               <div className='carouselcontainer'>
-              <Carousel infiniteLoop autoPlay>
+              <Carousel infiniteLoop>
       <div>
         <img src="../../../assets/info/HistoryMI/1.jpeg" alt="Image1" />
       </div>
@@ -170,7 +154,7 @@ export default function Explanation() {
           </div>
        </div></div>
               <div className='carouselcontainer'>
-              <Carousel infiniteLoop autoPlay>
+              <Carousel infiniteLoop>
       <div>
         <img src="../../../assets/info/MI/1.jpg" alt="Image1" />
       </div>
@@ -192,10 +176,6 @@ export default function Explanation() {
     </Carousel>
               
               </div>
-           
- 
-
-
       </div>
 :<Loading/>}
 

@@ -42,7 +42,7 @@ useEffect(()=>{
     clearFileInput()
     setLoading(true)
     localStorage.removeItem('user');
-    navigate('../home');
+      navigate('/home')
     setLoading(false)
   }
 

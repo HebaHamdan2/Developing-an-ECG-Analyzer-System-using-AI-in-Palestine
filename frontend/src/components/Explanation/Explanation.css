@@ -25,7 +25,7 @@
   }
   .containerNav{
     width: 85%;
-    margin-bottom: 2%;
+    /* margin-bottom: 2%; */
   }
 
   .carouselcontainer {
@@ -39,60 +39,4 @@
   .carousel .slide img{
 width: 100px;
 height: 400px;
-  }
-  .sideNav {
-    position: fixed;
-    /* top: 30px; Adjust the distance from the top as needed */
-    right: 0;
-    z-index: 999; /* Ensure it's above other elements */
-    height: 40vh; /* Adjust the height as needed */
-    width: 50px; /* Adjust the width as needed */
-    /* padding: 0;
-    margin: 0; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #e4edf2cf;
-    box-sizing: border-box;
-    transition: width 0.5s ease;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    direction: none;
-    border-radius:10px  0px ;
-  }
-  
-  .sideNav nav {
-    /* margin-top: 50px; Adjust as needed */
-    width: 50px; /* Adjust as needed */
-    overflow: hidden;
-    transition: width 0.5s ease;
-  }
-  
-  .sideNav:hover nav {
-    width: 100%; /* Adjust as needed */
-  }
-  
-  .fas {
-    color: #281227cb;
-    font-size: 30px;
-    margin-right: 10px; /* Adjust as needed */
-  }
-  
-  .sideNav li {
-    margin-top: 23px;
-  }
-  
-  .sideNav .nav-item {
-    /* margin-left: 30px; */
-    direction: none;
-    color: rgb(35, 33, 33);
-    text-decoration: none; /* Remove underline */
-  }
-  .sideNav nav a {
-    text-decoration: none !important; /* Remove underline */
-  }
-  .sideNav:hover {
-    width: 200px; /* Adjust as needed */
-    background: #e4edf2cf;
   }

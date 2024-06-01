@@ -43,7 +43,7 @@ export default function Home() {
 <div className='d-flex justify-content-between'>
 <div className="col-md-6 col-sm-12 content mt-4">
 <h1>Welcome to the Rhythm <br/> of Life with our ECG Analyzer!</h1>
-<p className='mr-5 pt-2'>Whether you're a healthcare professional or medical student, our platform offers the tools and information you need for accurate  ECG analysis. <strong>"Remember, it all begins with the diagnosis".</strong></p> 
+<p className='mr-5 pt-2'>Whether you're a healthcare professional or medical student, our platform offers the tools and information you need for accurate  ECG analysis. <strong>Remember, it all begins with the diagnosis.</strong></p> 
 <div className={`${style.controls} mt-4`}>
 <Link to="../signup" className='px-3'>Sign Up</Link>
 <Link to="../login" >Log in</Link>

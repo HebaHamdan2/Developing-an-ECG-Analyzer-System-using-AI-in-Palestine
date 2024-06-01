@@ -31,7 +31,7 @@ export default function ChangePassword() {
                   <div className="col-md-8 col-lg-6 col-xl-5  ">
                     <div className="text-center mb-2 mt-5">
                       <a href="/ChangePassword" className="auth-logo d-block">
-                        <img src="./assets/logo2cut.jpg" alt="logo" height={120} className="logo" />
+                        <img src="./assets/logo2cut.jpg" alt="logo" height={120} className="logoreg" />
                             </a>
                             <h4 className='mb-5'>Change Password</h4>
                          </div>

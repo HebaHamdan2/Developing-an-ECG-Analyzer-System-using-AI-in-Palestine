@@ -1,0 +1,41 @@
+.secnavbar {
+  padding: 10px 0;
+  width: 50%;
+  margin: auto;
+  transition: all 0.3s;
+  background-color:#92dff094 ;
+}
+
+.secnavbar.sticky {
+  position: fixed;
+  top: 0;
+  width: 50%;
+  margin: auto !important;
+  z-index: 1000;
+  background-color:#92dff0e3 ;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.secnavbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+
+}
+
+.secnavbar ul li {
+  margin: 0 15px;
+}
+
+.secnavbar ul li a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  color: white !important;
+}
+
+.secnavbar ul li a:hover {
+  color: rgba(0, 0, 0, 0.655) !important;
+}
