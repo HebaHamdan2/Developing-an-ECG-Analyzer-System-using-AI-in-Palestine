@@ -11,7 +11,7 @@ import Loading from '../Loading/Loading.jsx'
 export default function SignUp() {
   let [loading,setLoading]=useState(false);
    const schema=Yup.object({
-    userName:Yup.string().required("User Name is required").min(4,"min is 4 characters").max(20,"max is 20 characters"),
+    userName:Yup.string().required("User Name is required").min(2,"min is 2 characters").max(20,"max is 20 characters"),
     email:Yup.string().required("Email is required").email("not valid email"),
     password:Yup.string().required("Password is required").matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,

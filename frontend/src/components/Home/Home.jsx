@@ -40,8 +40,8 @@ export default function Home() {
 </div> */}
 </div>
 </nav>
-<div className='d-flex justify-content-between'>
-<div className="col-md-6 col-sm-12 content mt-4">
+<div className='d-lg-flex d-md-block justify-content-between'>
+<div className="col-lg-6  col-md-12 content mt-4">
 <h1>Welcome to the Rhythm <br/> of Life with our ECG Analyzer!</h1>
 <p className='mr-5 pt-2'>Whether you're a healthcare professional or medical student, our platform offers the tools and information you need for accurate  ECG analysis. <strong>Remember, it all begins with the diagnosis.</strong></p> 
 <div className={`${style.controls} mt-4`}>
@@ -49,7 +49,7 @@ export default function Home() {
 <Link to="../login" >Log in</Link>
 </div>
 </div>
-<div className="col-md-6  mt-1">
+<div className="col-lg-6 col-md-12  mt-1">
 <img  src="../../../assets/home.jpg"  className={`${style.img}`}  alt="home" />
 </div>
 

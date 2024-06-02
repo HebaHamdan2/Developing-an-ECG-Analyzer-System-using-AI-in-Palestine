@@ -153,8 +153,8 @@ padding-bottom: 10%;
     width: 100%;
     margin: auto;
   }
-  .navlink,.navitem button, .filecard,.resbtn,.navlinkstate{
-    font-size: 20px;
+  .navlink,.navitem button, .filecard,.resbtn,.navlinkstate, .filebtn  {
+    font-size: 25px;
   }
   .filebtn {
     margin-top: 5%;

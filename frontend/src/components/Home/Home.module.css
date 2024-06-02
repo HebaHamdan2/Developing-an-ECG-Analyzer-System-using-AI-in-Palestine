@@ -46,3 +46,16 @@ font-weight: 400;
   .containerNav{
     width: 100%;
   }
+  /* media query */
+@media (min-width:767px) and (max-width:1023px) {
+  .logo{
+    width: 40%;
+  }
+  p,  .controls a{
+    font-size: 30px;
+  }
+  h1{
+    font-size: 50px;
+  }
+  
+}
