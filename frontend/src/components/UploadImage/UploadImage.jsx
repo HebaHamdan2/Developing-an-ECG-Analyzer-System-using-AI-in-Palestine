@@ -31,7 +31,6 @@ useEffect(()=>{
       text: result,
       // icon: 'info',
       showConfirmButton: false,
-      timer: 1500,
     })
   }
   const handleFileChange = (event) => {
