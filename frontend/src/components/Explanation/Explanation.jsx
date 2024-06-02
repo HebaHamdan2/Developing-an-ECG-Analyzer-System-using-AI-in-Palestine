@@ -12,7 +12,7 @@ export default function Explanation() {
     function logOut(){
       setLoading(true)
       localStorage.removeItem('user');
-      navigate('/home')
+      navigate('../home')
       setLoading(false)
     }
     useEffect(()=>{
@@ -27,13 +27,13 @@ export default function Explanation() {
 </Helmet>
 {!loading?
     <div className='expla'> 
-      <div className=" container">
+      <div className=" containerexp">
               <nav className="navbar navbar-expand-lg navbar bg-transparent ">
         <div className={`container-fluid containerNav`}>
           <Link className="navbar-brand" to="#">
           <img  src="../../../assets/logo2-removebg-preview.png"  className='logo' alt="logo" />
           </Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse " id="navbarNav">

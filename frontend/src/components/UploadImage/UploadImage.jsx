@@ -29,6 +29,9 @@ useEffect(()=>{
       // icon: 'info',
       showConfirmButton: false,
       // timer: 1500
+      customClass: {
+        popup: `${style.customswalpopup }}`
+      }
     })
   }
   const handleFileChange = (event) => {
@@ -42,7 +45,7 @@ useEffect(()=>{
     clearFileInput()
     setLoading(true)
     localStorage.removeItem('user');
-      navigate('/home')
+      navigate('../home')
     setLoading(false)
   }
 
@@ -129,8 +132,7 @@ const handleUpload = async () => {
 
 {!loading?
   <div className={style.upload}>
-        
-        <div className=" container">
+        <div className={style.conatinerup}>
         <nav className="navbar navbar-expand-lg  bg-transparent">
   <div className={`container-fluid ${style.containerNav}`}>
     <Link className="navbar-brand" to="../uploadImage">
@@ -217,7 +219,7 @@ const handleUpload = async () => {
         
           )  :null}</div>
            {uploadStatus === "done" ? (
-            <div className="d-flex justify-content-center"> <button className={style.resbtn} onClick={Showalert}>Show Result</button></div>
+            <div className={`d-flex justify-content-center ${style.resdev}`}> <button className={style.resbtn} onClick={Showalert}>Show Result</button></div>
            
           ):""}
           

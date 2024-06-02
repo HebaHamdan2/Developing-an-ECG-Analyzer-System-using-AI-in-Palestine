@@ -1,6 +1,5 @@
 .expla{
     font-family: "Playfair Display", serif;
-    /* background-color: #e4edf2cf; */
 }
 .logo{
     width: 30%;
@@ -8,6 +7,7 @@
   .img{
     width: 100%;
   }
+
   
   .navitem a,  .navitem button,.navlinkstate{
     color: rgba(0, 0, 0, 0.737)!important;
@@ -40,3 +40,32 @@
 width: 100px;
 height: 400px;
   }
+/* media query */
+@media (min-width:767px) and (max-width:1023px) {
+  .container {
+    width: 90%;
+    margin: auto;
+  }
+  .containerexp{
+    width: 100%;
+    justify-content: space-around;
+  }
+  .containerNav{
+    width: 100%;
+  }
+ .navitem a,  .navitem button,.navlinkstate{
+    font-size: 20px;
+  }
+  .carouselcontainer {
+    width: 90%;
+      margin: auto;
+    }
+    .title{
+      font-size: 25px;
+      font-weight: 900;
+    }
+    .carousel .slide img{
+      width: 100%;
+      height: 40vh;
+        }
+}

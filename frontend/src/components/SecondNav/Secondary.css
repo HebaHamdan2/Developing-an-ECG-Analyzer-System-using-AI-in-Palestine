@@ -28,6 +28,7 @@ text-align: center;
 
 }
 
+
 .secnavbar ul li {
   margin: 0 15px;
 }
@@ -41,4 +42,11 @@ text-align: center;
 
 .secnavbar ul li a:hover {
   color: rgba(0, 0, 0, 0.655) !important;
+}
+/* media query */
+@media (min-width:767px) and (max-width:1023px) {
+  .secnavbar.sticky,.secnavbar{
+    width: 80%;
+    font-size: 22px;
+  }
 }

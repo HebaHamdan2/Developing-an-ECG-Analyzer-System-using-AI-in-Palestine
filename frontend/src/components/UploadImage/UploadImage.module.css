@@ -1,9 +1,14 @@
  .upload{
   font-family: "Playfair Display", serif;
   background-color:#e4edf2cf;
-  padding-bottom:4%;
+ height: 100%;
+padding-bottom: 10%;
 
  }
+ .conatinerup{
+  width: 90%;
+  margin: auto;
+}
  .containerNav{
   width: 85%;
   margin-bottom: 2%;
@@ -24,11 +29,12 @@
   transition: width 0.5s ease;
 }
  .filebtn {
-    width: 800px;
-    height: 500px;
+    width: 100%;
+    height: 80vh;
     font-size: 20px;
     font-weight: 800;
     display: flex;
+
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -59,7 +65,7 @@
   }
   
   .filecard {
-    width: 800px;
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 15px;
@@ -69,6 +75,7 @@
     border-radius: 6px;
     padding: 8px 15px;
   }
+
   .resbtn{
     background-color:#92dff0b8 !important ;
     border: none;
@@ -77,6 +84,9 @@
     margin-top: 20px;
     text-transform: uppercase;
     font-weight: 900;
+  }
+  .customswalpopup {
+    margin: 20px !important; /* Adjust the margin as needed */
   }
   .fileinfo{
     display: flex;
@@ -125,3 +135,29 @@
     color:  #92dff0 !important;
   }
 
+/* media query */
+@media (min-width:767px) and (max-width:1023px) {
+  .upload{
+    padding-bottom: 60%;
+
+  }
+  .container {
+    width: 90%;
+    margin: auto;
+  }
+  .conatinerup{
+    width: 100%;
+    justify-content: space-around;
+  }
+  .containerNav{
+    width: 100%;
+    margin: auto;
+  }
+  .navlink,.navitem button, .filecard,.resbtn,.navlinkstate{
+    font-size: 20px;
+  }
+  .filebtn {
+    margin-top: 5%;
+    height: 60vh;
+  }
+}
