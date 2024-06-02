@@ -8,6 +8,7 @@ import { AuthContext } from "../../contexts/Auth.context.jsx";
 import {jwtDecode} from "jwt-decode";
 import Swal from "sweetalert2";
 import Loading from "../Loading/Loading.jsx";
+import { isTokenExpired } from "../../hooks/isTokenExpired.js";
 
 export default  function FileUpload () {
   const [loading, setLoading] = useState(false)
@@ -20,7 +21,9 @@ export default  function FileUpload () {
 const[result,setResult]=useState('');
 const[Role,setRole]=useState('');
 useEffect(()=>{
-  setRole(jwtDecode(authUser.token,"login123").role);},[])
+  setRole(jwtDecode(authUser.token,"login123").role);
+ if(isTokenExpired(authUser.token)){logOut()}
+},[])
 
   function Showalert(){
     Swal.fire({
@@ -28,10 +31,7 @@ useEffect(()=>{
       text: result,
       // icon: 'info',
       showConfirmButton: false,
-      // timer: 1500
-      customClass: {
-        popup: `${style.customswalpopup }}`
-      }
+      timer: 1500,
     })
   }
   const handleFileChange = (event) => {

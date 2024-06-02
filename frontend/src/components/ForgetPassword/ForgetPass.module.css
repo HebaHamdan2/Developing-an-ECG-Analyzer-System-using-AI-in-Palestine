@@ -41,3 +41,19 @@
 
 
  }
+ @media (max-width:767px){
+    .container{
+        width: 80%;
+        margin: auto;
+    }
+    .reg input,.textForg{
+        font-size:20px;
+    }
+    .btnprimary{
+        font-size: 25px;
+    }
+    .reg{
+font-size: 25px;
+margin-top: 5%;
+    }
+ }

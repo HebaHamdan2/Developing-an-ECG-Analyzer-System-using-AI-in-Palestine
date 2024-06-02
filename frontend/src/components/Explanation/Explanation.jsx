@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { Link, useNavigate } from 'react-router-dom'
 import Loading from '../Loading/Loading.jsx'
@@ -6,8 +6,11 @@ import { Carousel } from 'react-responsive-carousel';
 import './Explanation.css'
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Secondary from '../SecondNav/Secondary.jsx';
+import { isTokenExpired } from '../../hooks/isTokenExpired.js';
+import { AuthContext } from '../../contexts/Auth.context.jsx';
 export default function Explanation() {
   const [loading, setLoading] = useState(false)
+  let{authUser}=useContext(AuthContext)
     let navigate=useNavigate();
     function logOut(){
       setLoading(true)
@@ -16,8 +19,8 @@ export default function Explanation() {
       setLoading(false)
     }
     useEffect(()=>{
-
-    },{loading})
+      if(isTokenExpired(authUser.token)){logOut()}
+    },[])
   return (
     <>
     <Helmet>

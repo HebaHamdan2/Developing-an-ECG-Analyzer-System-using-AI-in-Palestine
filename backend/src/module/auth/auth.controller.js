@@ -59,9 +59,16 @@ export const signIn =async(req, res,next)=>{
     if(!match){
     return res.status(400).json({message: "invalid password"});
     }
-    const token =jwt.sign({id:user._id ,role:user.role},process.env.LOGINSECRET,{expiresIn:'5m'})
-    const refreshToken =jwt.sign({id:user._id ,role:user.role},process.env.LOGINSECRET,
-        {expiresIn:60*60*24*30})
+     const token = jwt.sign(
+        { id: user._id, role: user.role },
+        process.env.LOGINSECRET,
+        { expiresIn: '24h' }//the account will be logout after 24 hours because of "expired token"
+    );
+    const refreshToken = jwt.sign(
+        { id: user._id, role: user.role },
+        process.env.LOGINSECRET,
+        { expiresIn: 60 * 60 * 24 * 30 }
+    );
     return res.status(200).json({message: "success", token , refreshToken});
 }
 

@@ -137,6 +137,7 @@ padding-bottom: 10%;
 
 /* media query */
 @media (min-width:767px) and (max-width:1023px) {
+
   .upload{
     padding-bottom: 60%;
 
@@ -151,7 +152,6 @@ padding-bottom: 10%;
   }
   .containerNav{
     width: 100%;
-    margin: auto;
   }
   .navlink,.navitem button, .filecard,.resbtn,.navlinkstate, .filebtn  {
     font-size: 25px;
@@ -159,5 +159,16 @@ padding-bottom: 10%;
   .filebtn {
     margin-top: 5%;
     height: 60vh;
+  }}
+@media (max-width:767px) {
+  .logo{
+    width: 70%;
   }
-}
+  .container {
+    width: 90%;
+    margin: auto;
+  }
+  .containerNav{
+    width: 100%;
+  }
+  }

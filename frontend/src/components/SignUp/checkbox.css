@@ -6,9 +6,19 @@
 .form-check-input:hover {
   cursor: pointer;
 }
-
-span,
-input,
-label {
-  font-size: 25px;
+@media (min-width:767px) and (max-width:1023px){
+  span,
+  input,
+  label {
+    font-size: 25px;
+  }
+  
+}
+@media (max-width:767px){
+  span,
+  input,
+  label {
+    font-size: 20px;
+  }
+  
 }

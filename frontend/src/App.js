@@ -14,21 +14,19 @@ import ChangePassword from './components/ForgetPassword/ChangePassword.jsx';
 import Explanation from './components/Explanation/Explanation.jsx';
 import { useEffect } from 'react';
 function App() {
-  let checkLogin=JSON.parse(localStorage.getItem('user'));
   let routers=createBrowserRouter([
     {path:'',element:<Layout/>,children:[
-   {index:true,element:checkLogin?<UploadImage/>:<Home/>},
-   {path:'/home',element:checkLogin?<UploadImage/>:<Home/>},
+   {index:true,element:<Home/>},
+   {path:'/home',element:<Home/>},
    {path:'/uploadImage',element:<Protected><UploadImage/></Protected>},//to make sure that nobody can access this page except registered user
-   {path:'/login',element:checkLogin?<UploadImage/>:<Login/>},
-   {path:'/signup',element:checkLogin?<UploadImage/>:<SignUp/>},
-   {path:'/forgetPassword',element:checkLogin?<UploadImage/>:<ForgetPassword/>},
-   {path:'/changePassword',element:checkLogin?<UploadImage/>:<ChangePassword/>},
+   {path:'/login',element:<Login/>},
+   {path:'/signup',element:<SignUp/>},
+   {path:'/forgetPassword',element:<ForgetPassword/>},
+   {path:'/changePassword',element:<ChangePassword/>},
    {path:'/explanation',element:<Protected who="Student"><Explanation/></Protected>},//only students
    {path:'*',element:<Notfound/>}
     ]}
   ])
-useEffect(()=>{},{checkLogin})
   return (
     <>
     <AuthContextProvider>
