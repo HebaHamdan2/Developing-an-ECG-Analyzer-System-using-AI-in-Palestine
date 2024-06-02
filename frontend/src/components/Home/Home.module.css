@@ -5,7 +5,7 @@
   h1{
     font-weight: 600;
   }
-  .logo{
+  .logo1{
     width: 20%;
   }
 
@@ -48,7 +48,7 @@ font-weight: 400;
   }
   /* media query */
 @media (min-width:767px) and (max-width:1023px) {
-  .logo{
+  .logo1{
     width: 40%;
   }
   p,  .controls a{

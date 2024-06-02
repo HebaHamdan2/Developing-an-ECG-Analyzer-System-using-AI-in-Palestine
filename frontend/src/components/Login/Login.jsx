@@ -59,7 +59,7 @@ try{
 <div className="account-pages pt-sm-5">
   <div className={`${style.container}`}>
     <div className="box row justify-content-center">
-      <div className="col-md-8 col-lg-6 col-xl-5  ">
+      <div className="col-md-9 col-lg-5  ">
         <div className="text-center mb-2">
           <a href="/login" className="auth-logo mb-3 d-block">
             <img src="./assets/logo2cut.jpg" alt="logo" height={130} className="logoreg" />

@@ -28,3 +28,16 @@
     color: white;
     font-weight: 900 !important;
  }
+ @media (min-width:767px) and (max-width:1023px){
+    .reg input,.textForg{
+        font-size:25px;
+    }
+    .btnprimary{
+        font-size: 35px;
+    }
+    .forget{
+        margin-top: 20%;
+    }
+
+
+ }

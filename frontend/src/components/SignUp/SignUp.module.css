@@ -1,6 +1,7 @@
 .reg{
    font-family: "Playfair Display", serif;
    overflow: hidden;
+
 }
 .logoreg{
     width: auto;
@@ -27,4 +28,20 @@
     background-color:#92dff090;
     color: white;
     font-weight: 900 !important;
+ }
+ /* media query */
+ @media (min-width:767px) and (max-width:1023px){
+    .reg input{
+        font-size:25px;
+    }
+    .btnprimary{
+        font-size: 35px;
+    }
+    .reg{
+font-size: 25px;
+margin-top: 10%;
+    }
+
+
+
  }

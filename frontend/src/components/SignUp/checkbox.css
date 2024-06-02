@@ -1,8 +1,14 @@
+.form-check-input:checked {
+  background-color: #92dff0;
+  border-color: #92dff0eb;
 
-    .form-check-input:checked {
-        background-color: #92dff0;
-        border-color: #92dff0eb;
-    }
-    .form-check-input:hover{
-        cursor: pointer;
-    }
+}
+.form-check-input:hover {
+  cursor: pointer;
+}
+
+span,
+input,
+label {
+  font-size: 25px;
+}

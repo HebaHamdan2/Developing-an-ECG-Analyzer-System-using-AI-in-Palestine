@@ -64,7 +64,7 @@ setLoading(true)
           <div className="account-pages pt-sm-5">
             <div className={`${style.container}`}>
               <div className="box row justify-content-center">
-                <div className="col-md-8 col-lg-6 col-xl-5  ">
+                <div className="col-md-9 col-lg-5   ">
                   <div className="text-center mb-2">
                     <Link to="/signup" className="auth-logo mb-3 d-block">
                       <img src="./assets/logo2cut.jpg" alt="logo" height={120}  className="logoreg" />
@@ -76,7 +76,7 @@ setLoading(true)
                     <div className="cardLog-body">
                       <div >
                         <form  onSubmit={formik.handleSubmit}>
-                        <div className="w-50 m-auto">
+                        <div className="w-lg-50 w-md-70 m-auto">
               
                 </div>
                           <div className="mb-3">
