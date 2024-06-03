@@ -1,24 +1,31 @@
 .form-check-input:checked {
-  background-color: #92dff0;
-  border-color: #92dff0eb;
+  background-color: #92dff0; 
+  border: 2px solid #92dff0; 
+  border-radius: 50%; 
+}
 
+.form-check-input {
+  margin-right: 8px; /* Space between radio button and label */
 }
-.form-check-input:hover {
-  cursor: pointer;
+
+.form-check-label {
+  cursor: pointer; /* Change cursor to pointer for better UX */
+  font-size: 20px;
 }
-@media (min-width:767px) and (max-width:1023px){
+
+@media (min-width: 767px) and (max-width: 1023px) {
   span,
   input,
-  label {
+  .form-check-label {
     font-size: 25px;
   }
   
 }
-@media (max-width:767px){
+
+@media (max-width: 767px) {
   span,
   input,
-  label {
-    font-size: 20px;
+  .form-check-label {
+    font-size: 15px;
   }
-  
 }

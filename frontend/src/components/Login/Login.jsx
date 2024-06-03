@@ -114,7 +114,7 @@ try{
           </div>
         </div>
         <div className="mt-3 text-center">
-          <p>Don't have an account ? <Link to="../signup" >Sign up</Link> </p>
+          <p className={style.p}>Don't have an account ? <Link to="../signup" >Sign up</Link> </p>
           
         </div>
       </div>

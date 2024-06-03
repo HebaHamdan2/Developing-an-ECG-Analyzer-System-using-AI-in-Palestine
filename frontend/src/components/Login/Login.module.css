@@ -47,6 +47,9 @@ a,Link{
     font-weight: 900 !important;
  }
  @media (min-width:767px) and (max-width:1023px){
+    .logoreg{
+        width: 15%;
+    }
     .login input,.textForg{
         font-size:25px;
     }
@@ -60,11 +63,14 @@ a,Link{
 
  }
  @media (max-width:767px){
+    .logoreg{
+        width: 10%;
+    }
     .container{
         width: 80%;
         margin: auto;
     }
-    .login input{
+    .login input,.textForg,.p{
         font-size:20px;
     }
     .btnprimary{

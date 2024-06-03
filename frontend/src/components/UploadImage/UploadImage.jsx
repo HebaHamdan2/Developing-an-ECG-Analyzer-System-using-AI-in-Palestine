@@ -132,7 +132,7 @@ const handleUpload = async () => {
 {!loading?
   <div className={style.upload}>
         <div className={style.conatinerup}>
-        <nav className="navbar navbar-expand-lg  bg-transparent">
+        <nav className={`${style.navcustom} navbar navbar-expand-lg  bg-transparent`}>
   <div className={`container-fluid ${style.containerNav}`}>
     <Link className="navbar-brand" to="../uploadImage">
     <img  src="../../../assets/logo2-removebg-preview.png"  className={`${style.logo}`}  alt="logo" />

@@ -7,7 +7,7 @@ export default function CheckboxForSpec({ onCheckboxChange, selectedRole }) {
         <span>I'm a :</span>
         <div className={`${selectedRole === "Student" ? "selected" : ""} form-check check-role`}>
           <input className="form-check-input " type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-            checked={selectedRole === "Student"}
+            checked={selectedRole === "Student"?'true':'false'}
             onChange={() => onCheckboxChange("Student")}
           />
           <label className="form-check-label" htmlFor="flexRadioDefault1">
@@ -16,7 +16,7 @@ export default function CheckboxForSpec({ onCheckboxChange, selectedRole }) {
         </div>
         <div className={`${selectedRole === "HealthcareProfessional" ? "selected" : ""} form-check check-role`}>
           <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-            checked={selectedRole === "HealthcareProfessional"}
+            checked={selectedRole === "HealthcareProfessional"?'true':'false'}
             onChange={() => onCheckboxChange("HealthcareProfessional")}
           />
           <label className="form-check-label" htmlFor="flexRadioDefault2">

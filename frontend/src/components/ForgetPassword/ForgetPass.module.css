@@ -29,6 +29,9 @@
     font-weight: 900 !important;
  }
  @media (min-width:767px) and (max-width:1023px){
+    .logoreg{
+        width: 20%;
+    }
     .reg input,.textForg{
         font-size:25px;
     }
@@ -42,6 +45,9 @@
 
  }
  @media (max-width:767px){
+    .logoreg{
+        width: 10%;
+    }
     .container{
         width: 80%;
         margin: auto;

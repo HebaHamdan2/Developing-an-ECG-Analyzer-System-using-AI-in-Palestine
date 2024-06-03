@@ -30,8 +30,8 @@ export default function Explanation() {
 </Helmet>
 {!loading?
     <div className='expla'> 
-      <div className=" containerexp">
-              <nav className="navbar navbar-expand-lg navbar bg-transparent ">
+      <div className=" containerexp" id="normal">  
+              <nav className={` navbar navbar-expand-lg  bg-transparent`}>
         <div className={`container-fluid containerNav`}>
           <Link className="navbar-brand" to="#">
           <img  src="../../../assets/logo2-removebg-preview.png"  className='logo' alt="logo" />
@@ -61,7 +61,7 @@ export default function Explanation() {
           
       
         
-          <div class="inspiration" id="normal">
+          <div class="inspiration">
       <div class=" pt-5 d-flex justify-content-center">
         <div class="title position-relative  ">
           <span class="text-uppercase border-bottom border-custom" >Let's Learn about!</span>

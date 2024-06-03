@@ -9,10 +9,12 @@
 .container{
     width: 100%;
 }
-
-.reg input{
-    font-size: 17px;
-    font-weight: 200;
+.p{
+    font-size: 22px; 
+}
+.reg input,.labelf{
+    font-size: 20px;
+    font-weight: 400;
 }
 .check-gender{
     cursor: pointer;
@@ -22,7 +24,7 @@
    background-color:  #92dff0;
    color: white;
    font-weight: 900 !important;
-   font-size: 20px;
+   font-size: 25px;
 }
 .btnprimary:hover{
     background-color:#92dff090;
@@ -31,14 +33,17 @@
  }
  /* media query */
  @media (min-width:767px) and (max-width:1023px){
-    .reg input{
-        font-size:25px;
+    .reg input,.reg input,.labelf,.p{
+        font-size:15px;
     }
     .btnprimary{
-        font-size: 35px;
+        font-size: 25px;
+    }
+    .logoreg{
+        height: auto;
     }
     .reg{
-font-size: 25px;
+font-size: 15px;
 margin-top: 10%;
     }
  }
@@ -47,14 +52,15 @@ margin-top: 10%;
         width: 80%;
         margin: auto;
     }
-    .reg input{
+    .reg input,.reg input,.labelf,.p{
         font-size:20px;
     }
     .btnprimary{
         font-size: 25px;
     }
     .reg{
-font-size: 25px;
+font-size: 20px;
 margin-top: 5%;
     }
+    
  }
