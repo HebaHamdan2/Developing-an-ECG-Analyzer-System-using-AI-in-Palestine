@@ -5,6 +5,5 @@ export const isTokenExpired = (token) => {
   
   const decodedToken = jwtDecode(token,"login123");
   const currentTime = Date.now() / 1000;
-  
   return decodedToken.exp < currentTime;
 };

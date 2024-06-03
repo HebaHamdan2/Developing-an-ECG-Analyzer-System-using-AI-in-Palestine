@@ -23,6 +23,7 @@ const[Role,setRole]=useState('');
 useEffect(()=>{
   setRole(jwtDecode(authUser.token,"login123").role);
  if(isTokenExpired(authUser.token)){logOut()}
+ 
 },[])
 
   function Showalert(){
