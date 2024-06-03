@@ -1,65 +1,65 @@
-.forget{
-   font-family: "Playfair Display", serif;
-   overflow: hidden;
-   margin-bottom: 30px;
+.forget {
+  font-family: "Playfair Display", serif;
+  overflow: hidden;
+  margin-bottom: 30px;
 }
-.logoreg{
-    width: auto;
+.logoreg {
+  width: auto;
 }
-.container{
-    width: 100%;
+.container {
+  width: 100%;
 }
-.reg input{
+.reg input {
+  font-size: 20px;
+  font-weight: 200;
+}
+.check-gender {
+  cursor: pointer;
+}
+
+.btnprimary {
+  background-color: #92dff0;
+  color: white;
+  font-weight: 900 !important;
+  font-size: 20px;
+}
+.btnprimary:hover {
+  background-color: #92dff090;
+  color: white;
+  font-weight: 900 !important;
+}
+@media (min-width: 767px) and (max-width: 1023px) {
+  .logoreg {
+    width: 20%;
+  }
+  .reg input,
+  .textForg {
+    font-size: 25px;
+  }
+  .btnprimary {
+    font-size: 35px;
+  }
+  .forget {
+    margin-top: 20%;
+  }
+}
+@media (max-width: 767px) {
+  .logoreg {
+    width: 10%;
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+  }
+  .reg input,
+  .textForg {
     font-size: 20px;
-    font-weight: 200;
+  }
+  .btnprimary {
+    font-size: 25px;
+  }
+  .reg {
+    font-size: 25px;
+    margin-top: 5%;
+  }
 }
-.check-gender{
-    cursor: pointer;
-}
-
-.btnprimary{
-   background-color:  #92dff0;
-   color: white;
-   font-weight: 900 !important;
-   font-size: 20px;
-}
-.btnprimary:hover{
-    background-color:#92dff090;
-    color: white;
-    font-weight: 900 !important;
- }
- @media (min-width:767px) and (max-width:1023px){
-    .logoreg{
-        width: 20%;
-    }
-    .reg input,.textForg{
-        font-size:25px;
-    }
-    .btnprimary{
-        font-size: 35px;
-    }
-    .forget{
-        margin-top: 20%;
-    }
-
-
- }
- @media (max-width:767px){
-    .logoreg{
-        width: 10%;
-    }
-    .container{
-        width: 80%;
-        margin: auto;
-    }
-    .reg input,.textForg{
-        font-size:20px;
-    }
-    .btnprimary{
-        font-size: 25px;
-    }
-    .reg{
-font-size: 25px;
-margin-top: 5%;
-    }
- }

@@ -1,7 +1,7 @@
-.selected .form-check-input{
-  background-color: #92dff0; 
-  border: 2px solid #92dff0; 
-  border-radius: 50%; 
+.selected .form-check-input {
+  background-color: #92dff0;
+  border: 2px solid #92dff0;
+  border-radius: 50%;
 }
 
 .form-check-input {
@@ -19,7 +19,6 @@
   .form-check-label {
     font-size: 25px;
   }
-  
 }
 
 @media (max-width: 767px) {

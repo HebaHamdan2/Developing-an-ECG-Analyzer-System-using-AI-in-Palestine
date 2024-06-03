@@ -1,53 +1,56 @@
-.page-not-found{
-    background-color:#e4edf2cf;
-    padding: 200px 0;
-    text-align: center;
-    height: 100vh;
-    }
-.back{
-    text-decoration: none;
-    color: white !important;
-    padding:10px;
-    background-color:#92dff0;
-    margin-left: 10px;
-    top: 10px;
-    font-weight: 900;
-    border-radius: 5px;
-    font-size: 16px;
+.page-not-found {
+  background-color: #e4edf2cf;
+  padding: 200px 0;
+  text-align: center;
+  height: 100vh;
 }
-.back:hover{background-color:#92dff090;}
-    .page-not-found h2{
-        color: #343a40;
-        font-size: 80px !important;
-        text-shadow: 0 0 25px rgba(52,58,64,.2);
-        opacity: .1;
-        font-weight: 600;
-    }
-    .page-not-found h3{
-        color: #3e4555;
-        font-weight: 700;
-    }
-    .page-not-found p{
-        font-size: 16px;
-        line-height: 24px;
-        color: #948a99;
-        margin-bottom: 1.7em;
-        margin-top: 0;
-    
-    }
-    @media (min-width:767px) and (max-width:1023px) {
-        .page-not-found{
-            padding: 400px 0px;
-        }
-        .back,.page-not-found p{
-            font-size: 25px;
-        }
-      }
-      @media (max-width:767px) {
-        .page-not-found{
-            padding: 100px 0px;
-        }
-        .back,.page-not-found p{
-            font-size: 20px;
-        }
-      }
+.back {
+  text-decoration: none;
+  color: white !important;
+  padding: 10px;
+  background-color: #92dff0;
+  margin-left: 10px;
+  top: 10px;
+  font-weight: 900;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.back:hover {
+  background-color: #92dff090;
+}
+.page-not-found h2 {
+  color: #343a40;
+  font-size: 80px !important;
+  text-shadow: 0 0 25px rgba(52, 58, 64, 0.2);
+  opacity: 0.1;
+  font-weight: 600;
+}
+.page-not-found h3 {
+  color: #3e4555;
+  font-weight: 700;
+}
+.page-not-found p {
+  font-size: 16px;
+  line-height: 24px;
+  color: #948a99;
+  margin-bottom: 1.7em;
+  margin-top: 0;
+}
+@media (min-width: 767px) and (max-width: 1023px) {
+  .page-not-found {
+    padding: 400px 0px;
+  }
+  .back,
+  .page-not-found p {
+    font-size: 25px;
+  }
+}
+@media (max-width: 767px) {
+  .page-not-found {
+    padding: 100px 0px;
+  }
+  .back,
+  .page-not-found p {
+    font-size: 20px;
+  }
+}

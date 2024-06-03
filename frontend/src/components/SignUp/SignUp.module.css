@@ -1,66 +1,71 @@
-.reg{
-   font-family: "Playfair Display", serif;
-   overflow: hidden;
+.reg {
+  font-family: "Playfair Display", serif;
+  overflow: hidden;
+}
+.logoreg {
+  width: auto;
+}
+.container {
+  width: 100%;
+}
+.p {
+  font-size: 22px;
+}
+.reg input,
+.labelf {
+  font-size: 20px;
+  font-weight: 400;
+}
+.check-gender {
+  cursor: pointer;
+}
 
+.btnprimary {
+  background-color: #92dff0;
+  color: white;
+  font-weight: 900 !important;
+  font-size: 25px;
 }
-.logoreg{
-    width: auto;
+.btnprimary:hover {
+  background-color: #92dff090;
+  color: white;
+  font-weight: 900 !important;
 }
-.container{
-    width: 100%;
+/* media query */
+@media (min-width: 767px) and (max-width: 1023px) {
+  .reg input,
+  .reg input,
+  .labelf,
+  .p {
+    font-size: 15px;
+  }
+  .btnprimary {
+    font-size: 25px;
+  }
+  .logoreg {
+    height: auto;
+  }
+  .reg {
+    font-size: 15px;
+    margin-top: 10%;
+  }
 }
-.p{
-    font-size: 22px; 
-}
-.reg input,.labelf{
+@media (max-width: 767px) {
+  .container {
+    width: 80%;
+    margin: auto;
+  }
+  .reg input,
+  .reg input,
+  .labelf,
+  .p {
     font-size: 20px;
-    font-weight: 400;
+  }
+  .btnprimary {
+    font-size: 25px;
+  }
+  .reg {
+    font-size: 20px;
+    margin-top: 5%;
+  }
 }
-.check-gender{
-    cursor: pointer;
-}
-
-.btnprimary{
-   background-color:  #92dff0;
-   color: white;
-   font-weight: 900 !important;
-   font-size: 25px;
-}
-.btnprimary:hover{
-    background-color:#92dff090;
-    color: white;
-    font-weight: 900 !important;
- }
- /* media query */
- @media (min-width:767px) and (max-width:1023px){
-    .reg input,.reg input,.labelf,.p{
-        font-size:15px;
-    }
-    .btnprimary{
-        font-size: 25px;
-    }
-    .logoreg{
-        height: auto;
-    }
-    .reg{
-font-size: 15px;
-margin-top: 10%;
-    }
- }
- @media (max-width:767px){
-    .container{
-        width: 80%;
-        margin: auto;
-    }
-    .reg input,.reg input,.labelf,.p{
-        font-size:20px;
-    }
-    .btnprimary{
-        font-size: 25px;
-    }
-    .reg{
-font-size: 20px;
-margin-top: 5%;
-    }
-    
- }

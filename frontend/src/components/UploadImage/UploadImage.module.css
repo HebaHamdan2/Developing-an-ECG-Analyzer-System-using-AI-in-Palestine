@@ -1,15 +1,14 @@
- .upload{
+.upload {
   font-family: "Playfair Display", serif;
-  background-color:#e4edf2cf;
- height: 100%;
-padding-bottom: 10%;
-
- }
- .conatinerup{
+  background-color: #e4edf2cf;
+  height: 100%;
+  padding-bottom: 10%;
+}
+.conatinerup {
   width: 90%;
   margin: auto;
 }
- .containerNav{
+.containerNav {
   width: 85%;
   margin-bottom: 2%;
 }
@@ -28,161 +27,164 @@ padding-bottom: 10%;
   border-radius: 8px;
   transition: width 0.5s ease;
 }
- .filebtn {
-    width: 100%;
-    height: 80vh;
-    font-size: 20px;
-    font-weight: 800;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    color: #92dff0;
-    background-color: #fff;
-    border: 1.5px dashed #92dff0b8;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .filebtn:hover {
-    color: #92dff0b8;
-    background-color: #fff;
-  }
-  
-  .filebtn span {
-    width: 50px;
-    height: 50px;
-    font-size: 75px;
-    color: #92dff0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 25px;
-    background-color: white;
-  }
-  
-  .filecard {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: #000;
-    background-color: #fff;
-    border: 1px dashed #92dff090;
-    border-radius: 6px;
-    padding: 8px 15px;
-  }
-
-  .resbtn{
-    background-color:#92dff0b8 !important ;
-    border: none;
-    padding: 10px;
-    border-radius: 6px;
-    margin-top: 20px;
-    text-transform: uppercase;
-    font-weight: 900;
-  }
-  .fileinfo{
-    display: flex;
-    justify-content: space-around;
-  }
-  .fileinfo button {
-    font-size: 25px;
-    color: #92dff0b8;
-    background-color: white;
-    border: none;
-    border-radius: 30px;
-    margin-bottom: 450px !important;
-  }
-.image{
+.filebtn {
   width: 100%;
-
+  height: 80vh;
+  font-size: 20px;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: #92dff0;
+  background-color: #fff;
+  border: 1.5px dashed #92dff0b8;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-  .container {
-    width: 65%;
-    margin: auto;
-  }
-  .logo{
-    width: 30%;
-  }
-  .img{
-    width: 100%;
-  }
 
-  .blk{
-    color: rgba(0, 0, 0, 0.737)!important;
-  }
-   
- .navlink,.navitem button{
-    color: rgba(0, 0, 0, 0.737)!important;
-    text-decoration: none;
-    top: 10px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  
-  .navlinkstate{
-    color:  #92dff0 !important; 
-    text-transform: uppercase;
-  }
-  .navlink:hover{
-    color:  #92dff0 !important;
-  }
+.filebtn:hover {
+  color: #92dff0b8;
+  background-color: #fff;
+}
+
+.filebtn span {
+  width: 50px;
+  height: 50px;
+  font-size: 75px;
+  color: #92dff0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  background-color: white;
+}
+
+.filecard {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #000;
+  background-color: #fff;
+  border: 1px dashed #92dff090;
+  border-radius: 6px;
+  padding: 8px 15px;
+}
+
+.resbtn {
+  background-color: #92dff0b8 !important ;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.fileinfo {
+  display: flex;
+  justify-content: space-around;
+}
+.fileinfo button {
+  font-size: 25px;
+  color: #92dff0b8;
+  background-color: white;
+  border: none;
+  border-radius: 30px;
+  margin-bottom: 450px !important;
+}
+.image {
+  width: 100%;
+}
+.container {
+  width: 65%;
+  margin: auto;
+}
+.logo {
+  width: 30%;
+}
+.img {
+  width: 100%;
+}
+
+.blk {
+  color: rgba(0, 0, 0, 0.737) !important;
+}
+
+.navlink,
+.navitem button {
+  color: rgba(0, 0, 0, 0.737) !important;
+  text-decoration: none;
+  top: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.navlinkstate {
+  color: #92dff0 !important;
+  text-transform: uppercase;
+}
+.navlink:hover {
+  color: #92dff0 !important;
+}
 
 /* media query */
-@media (min-width:767px) and (max-width:1023px) {
-
-  .upload{
+@media (min-width: 767px) and (max-width: 1023px) {
+  .upload {
     padding-bottom: 60%;
-
   }
-  .navcustom{
-    flex-wrap:unset;
+  .navcustom {
+    flex-wrap: unset;
   }
   .container {
     width: 90%;
     margin: auto;
   }
-  .conatinerup{
+  .conatinerup {
     width: 100%;
     justify-content: space-around;
   }
-  .containerNav{
+  .containerNav {
     width: 100%;
   }
-  .navlink,.navitem button, .filecard,.resbtn,.navlinkstate, .filebtn  {
+  .navlink,
+  .navitem button,
+  .filecard,
+  .resbtn,
+  .navlinkstate,
+  .filebtn {
     font-size: 25px;
   }
   .filebtn {
     margin-top: 5%;
     height: 60vh;
-  }}
-@media (max-width:767px) {
-  .upload{
+  }
+}
+@media (max-width: 767px) {
+  .upload {
     padding-bottom: 90%;
   }
-  .logo{
+  .logo {
     width: 70%;
   }
   .filecard {
-    align-items:start;
+    align-items: start;
     gap: 0px;
     padding: 5px 10px;
   }
-  .fileinfo button{
+  .fileinfo button {
     margin-bottom: 50% !important;
   }
   .container {
     width: 90%;
     margin: auto;
   }
-  .containerNav{
+  .containerNav {
     width: 100%;
   }
-  .navcustom{
-    flex-wrap:unset;
+  .navcustom {
+    flex-wrap: unset;
   }
-
-  }
+}

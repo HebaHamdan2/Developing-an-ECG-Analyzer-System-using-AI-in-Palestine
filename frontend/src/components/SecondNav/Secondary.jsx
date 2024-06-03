@@ -13,15 +13,15 @@ export default function Secondary() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); 
+  }, []);
   return (
     <nav className={`secnavbar ${isSticky ? 'sticky' : ''}`}>
-    <ul>
-      <li><a href="#normal">Normal</a></li>
-      <li><a href="#abnormal">Abnormal</a></li>
-      <li><a href="#MI">Myocardial Infraction</a></li>
-      <li><a href="#HMI">History of MI</a></li>
-    </ul>
-  </nav>
+      <ul>
+        <li><a href="#normal">Normal</a></li>
+        <li><a href="#abnormal">Abnormal</a></li>
+        <li><a href="#MI">Myocardial Infraction</a></li>
+        <li><a href="#HMI">History of MI</a></li>
+      </ul>
+    </nav>
   )
 }

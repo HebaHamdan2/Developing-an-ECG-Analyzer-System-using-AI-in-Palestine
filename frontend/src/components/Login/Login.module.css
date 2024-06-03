@@ -1,83 +1,83 @@
-.login{
-   font-family: "Playfair Display", serif;
-   overflow: hidden;
+.login {
+  font-family: "Playfair Display", serif;
+  overflow: hidden;
 }
 
-.logoreg{
-    width: 20%;
+.logoreg {
+  width: 20%;
 }
-.container{
-    width: 100%;
+.container {
+  width: 100%;
 }
-.forgot{
-    
-    color: black !important;
+.forgot {
+  color: black !important;
 }
-.textForg{
-    font-size: 15px;
-    text-align: end;
-    color: black !important;
+.textForg {
+  font-size: 15px;
+  text-align: end;
+  color: black !important;
 }
-.textForg:hover{
-    text-decoration: underline;
-    cursor: pointer !important;
-
+.textForg:hover {
+  text-decoration: underline;
+  cursor: pointer !important;
 }
-.login input{
+.login input {
+  font-size: 20px;
+  font-weight: 200;
+}
+.check-gender {
+  cursor: pointer;
+}
+a,
+Link {
+  text-decoration: none;
+  color: #92dff0 !important;
+  font-weight: 900 !important;
+}
+.btnprimary {
+  background-color: #92dff0;
+  color: white;
+  font-weight: 900 !important;
+  font-size: 20px;
+}
+.btnprimary:hover {
+  background-color: #92dff090;
+  color: white;
+  font-weight: 900 !important;
+}
+@media (min-width: 767px) and (max-width: 1023px) {
+  .logoreg {
+    width: 15%;
+  }
+  .login input,
+  .textForg {
+    font-size: 25px;
+  }
+  .btnprimary {
+    font-size: 35px;
+  }
+  .login {
+    margin-top: 20%;
+  }
+}
+@media (max-width: 767px) {
+  .logoreg {
+    width: 10%;
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+  }
+  .login input,
+  .textForg,
+  .p {
     font-size: 20px;
-    font-weight: 200;
+  }
+  .btnprimary {
+    font-size: 25px;
+  }
+  .login {
+    font-size: 25px;
+    margin-top: 5%;
+  }
 }
-.check-gender{
-    cursor: pointer;
-}
-a,Link{
-	text-decoration: none;
-    color: #92dff0 !important;
-    font-weight: 900 !important;
-}
-.btnprimary{
-   background-color:  #92dff0;
-   color: white;
-   font-weight: 900 !important;
-   font-size: 20px;
-}
-.btnprimary:hover{
-    background-color:#92dff090;
-    color: white;
-    font-weight: 900 !important;
- }
- @media (min-width:767px) and (max-width:1023px){
-    .logoreg{
-        width: 15%;
-    }
-    .login input,.textForg{
-        font-size:25px;
-    }
-    .btnprimary{
-        font-size: 35px;
-    }
-    .login{
-        margin-top: 20%;
-    }
-
-
- }
- @media (max-width:767px){
-    .logoreg{
-        width: 10%;
-    }
-    .container{
-        width: 80%;
-        margin: auto;
-    }
-    .login input,.textForg,.p{
-        font-size:20px;
-    }
-    .btnprimary{
-        font-size: 25px;
-    }
-    .login{
-font-size: 25px;
-margin-top: 5%;
-    }
- }

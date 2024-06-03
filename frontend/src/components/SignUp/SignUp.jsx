@@ -11,7 +11,7 @@ import Loading from '../Loading/Loading.jsx';
 
 export default function SignUp() {
   let [loading, setLoading] = useState(false);
-  
+
   const schema = Yup.object({
     userName: Yup.string().required("User Name is required").min(3, "min is 3 characters").max(20, "max is 20 characters"),
     email: Yup.string().required("Email is required").email("not valid email"),
@@ -40,7 +40,7 @@ export default function SignUp() {
   };
 
   let navigate = useNavigate();
-  
+
   async function register(values) {
     setLoading(true);
     try {
@@ -174,4 +174,5 @@ export default function SignUp() {
           </div>
         </div>
         : <Loading />
-        }</>);}
+      }</>);
+}
