@@ -1,5 +1,7 @@
 .expla {
   font-family: "Playfair Display", serif;
+  background-color: #F9F3FE !important;
+  padding-bottom: 2%;
 }
 .logo {
   width: 30%;
@@ -7,7 +9,6 @@
 .img {
   width: 100%;
 }
-
 .navitem a,
 .navitem button,
 .navlinkstate {
@@ -15,11 +16,13 @@
   text-decoration: none;
   top: 10px;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 900;
+  font-size: 20px;
 }
 .navitem .navlinkstate {
   color: #92dff0 !important;
 }
+
 
 .navitem a:hover {
   color: #92dff0 !important ;
@@ -29,20 +32,59 @@
   /* margin-bottom: 2%; */
 }
 
+.welcome{
+  padding-top: 3%;
+  padding-bottom: 5%;
+  width: 75%;
+  margin: auto;
+}
+.welcome h1{
+  font-size: 45px;
+  text-align: center;
+  font-weight: 900;
+}
+.welcome p{
+  font-size: 25px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
 .carouselcontainer {
   width: 70%;
   margin: auto;
+  margin-bottom: 10%;
 }
-
+.inspiration span{
+  font-weight: 600;
+  font-size: 20px;
+}
+.inspiration h2{
+  font-weight: 800;
+  font-size: 40px;
+}
 .carousel.carousel-slider .control-arrow:hover {
   background-color: rgba(0, 0, 0, 0.162) !important;
 }
 .carousel .slide img {
   height: 400px;
 }
+
+
+.navbar-toggler {
+  border: none;
+}
+.navbar-toggler:focus {
+  outline: none;
+}
+.navbar-toggler-icon {
+  color: #ffffff;
+}
 /* media query */
 @media (min-width: 767px) and (max-width: 1023px) {
   .container {
+    width: 90%;
+    margin: auto;
+  }
+  .welcome{
     width: 90%;
     margin: auto;
   }
@@ -85,7 +127,7 @@
   .navbar {
     flex-wrap: unset;
   }
-  .containerexp {
+  .containerexp ,.welcome{
     width: 100%;
     justify-content: space-around;
   }
@@ -98,6 +140,16 @@
     font-size: 10px;
     font-weight: 900;
   }
+  .welcome{
+    width: 90%;
+    margin: auto;
+  }
+  .welcome h1{
+    font-size: 20px;
+  }
+  .welcome p{
+    font-size: 10px;
+  }
   .carouselcontainer img {
     width: 100%;
     height: auto;
@@ -108,5 +160,11 @@
   }
   .carousel .slide img {
     height: 200px;
+  }
+  .inspiration span{
+    font-size: 10px;
+  }
+  .inspiration h2{
+    font-size: 20px;
   }
 }

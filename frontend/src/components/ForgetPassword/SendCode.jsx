@@ -31,7 +31,7 @@ export default function ForgetPassword() {
                     <a href="/forgetPassword" className="auth-logo mb-5 d-block">
                       <img src="./assets/logo2cut.jpg" alt="logo" height={120} className="logoreg" />
                     </a>
-                    <h4 className='mb-5'>Forgot Password</h4>
+                    <h4 className={`${style.titled} mb-5`}>Forgot Password</h4>
                   </div>
                   <div className="cardLog">
                     <div className="cardLog-body">

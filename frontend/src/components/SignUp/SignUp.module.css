@@ -5,15 +5,19 @@
 .logoreg {
   width: auto;
 }
+.titled {
+  font-weight: 900;
+  font-size: 25px;
+}
 .container {
   width: 100%;
 }
 .p {
-  font-size: 22px;
+  font-size: 25px;
 }
 .reg input,
 .labelf {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 400;
 }
 .check-gender {

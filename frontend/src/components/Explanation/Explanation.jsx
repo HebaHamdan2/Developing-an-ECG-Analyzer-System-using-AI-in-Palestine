@@ -30,7 +30,7 @@ export default function Explanation() {
       </Helmet>
       {!loading ?
         <div className='expla'>
-          <div className=" containerexp" id="normal">
+          <div className=" containerexp">
             <nav className={` navbar navbar-expand-lg  bg-transparent`}>
               <div className={`container-fluid containerNav`}>
                 <Link className="navbar-brand" to="#">
@@ -56,12 +56,19 @@ export default function Explanation() {
                 </div>
               </div>
             </nav>
-            <Secondary />
+           
+
+
           </div>
 
+ <div className="welcome">
+  <h1>Welcome, medical students!</h1>
+<p>You will learn how to read the ECG of normal, abnormal, and myocardial infarction (MI) cases, as well as understand the history of MI. Enhance your diagnostic skills by recognizing and analyzing various cardiac rhythms, and build a solid foundation in electrocardiography with us.
+</p>
+<Secondary />
+ </div>
 
-
-          <div class="inspiration">
+          <div class="inspiration" id="normal">
             <div class=" pt-5 d-flex justify-content-center">
               <div class="title position-relative  ">
                 <span class="text-uppercase border-bottom border-custom" >Let's Learn about!</span>

@@ -63,7 +63,7 @@ export default function Login() {
                   <a href="/login" className="auth-logo mb-3 d-block">
                     <img src="./assets/logo2cut.jpg" alt="logo" height={130} className="logoreg" />
                   </a>
-                  <h4 className='mb-5'>Sign in</h4>
+                  <h4 className={`${style.titled} mb-5`}>Sign in</h4>
                 </div>
                 <div className="cardLog">
                   <div className="cardLog-body">
@@ -71,7 +71,7 @@ export default function Login() {
                       <form onSubmit={formik.handleSubmit} >
 
                         <div className="mb-3">
-                          <label className="form-label">Email</label>
+                          <label className={style.formlabel}>Email</label>
                           <div className="input-group mb-3 bg-soft-light rounded-3">
                             <input type="email" id="email" placeholder="enter your email" aria-label="Enter Email" aria-describedby="basic-addon3"
                               value={formik.values.email}
@@ -86,7 +86,7 @@ export default function Login() {
                           {formik.errors.email && formik.touched.email ? <div className='small text-danger'>{formik.errors.email}</div> : <></>}
                         </div>
                         <div className="mb-1">
-                          <label className="form-label">Password</label>
+                          <label className={style.formlabel}>Password</label>
                           <div className="input-group mb-1 bg-soft-light rounded-3">
                             <input type="password" id="password" placeholder="enter your password" aria-label="Enter Password" aria-describedby="basic-addon4"
                               value={formik.values.password}

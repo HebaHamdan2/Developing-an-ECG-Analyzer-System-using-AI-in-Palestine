@@ -2,7 +2,10 @@
   font-family: "Playfair Display", serif;
   overflow: hidden;
 }
-
+.titled{
+  font-weight: 900;
+  font-size: 25px;
+}
 .logoreg {
   width: 20%;
 }
@@ -12,9 +15,10 @@
 .forgot {
   color: black !important;
 }
-.textForg {
-  font-size: 15px;
+.textForg,.formlabel {
+  font-size: 22px;
   text-align: end;
+  font-weight: 400;
   color: black !important;
 }
 .textForg:hover {

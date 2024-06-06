@@ -76,7 +76,7 @@ export default function SignUp() {
                     <Link to="/signup" className="auth-logo mb-3 d-block">
                       <img src="./assets/logo2cut.jpg" alt="logo" height={120} className="logoreg" />
                     </Link>
-                    <h4>Sign up</h4>
+                    <h4 className={style.titled}>Sign up</h4>
                     <p className="text-muted mb-2">Get your ECG Analyzer account now.</p>
                   </div>
                   <div className="cardLog">

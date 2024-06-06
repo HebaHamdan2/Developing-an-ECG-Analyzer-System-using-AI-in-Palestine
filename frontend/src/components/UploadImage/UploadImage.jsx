@@ -57,7 +57,7 @@ export default function FileUpload() {
   const clearFileInput = () => {
     inputRef.current.value = "";
     setSelectedFile(null);
-    setResult(null);
+    setResult('');
     setProgress(0);
     setUploadStatus("select");
   };
@@ -105,9 +105,10 @@ export default function FileUpload() {
 
       const response = await axios.post("/image/insertImage", formData, config);
 
-      stopAnimatingProgress();
 
+      stopAnimatingProgress();
       setResult(response.data.prediction);
+
       Swal.fire({
         title: 'Result!',
         text: response.data.prediction,
@@ -115,6 +116,8 @@ export default function FileUpload() {
       });
 
       setUploadStatus("done");
+
+
     } catch (err) {
       clearInterval(animateProgress);
       setUploadStatus("select");

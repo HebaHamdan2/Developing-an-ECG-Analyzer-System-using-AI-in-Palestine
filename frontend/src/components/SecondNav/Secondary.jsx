@@ -5,7 +5,7 @@ export default function Secondary() {
 
   const handleScroll = () => {
     const scrollTop = window.scrollY;
-    setIsSticky(scrollTop > 100);  // Change the 100 value as per your requirement
+    setIsSticky(scrollTop > 100);
   };
 
   useEffect(() => {

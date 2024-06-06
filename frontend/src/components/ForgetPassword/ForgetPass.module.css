@@ -3,6 +3,10 @@
   overflow: hidden;
   margin-bottom: 30px;
 }
+.titled{
+  font-weight: 900;
+  font-size: 25px;
+}
 .logoreg {
   width: auto;
 }

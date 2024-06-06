@@ -1,12 +1,13 @@
 .secnavbar {
-  padding: 10px 0;
-  width: 50%;
-  margin: auto;
+  width: 100%;
   transition: all 0.3s;
-  background-color: #d397f8a8;
 }
-
+.secnavbar.sticky  a{
+  background-color: transparent;
+}
 .secnavbar.sticky {
+  padding: 10px 0px;
+  background-color: #d397f8a8;
   position: fixed;
   width: 50%; /* Change this width as needed */
   top: 0;
@@ -24,18 +25,21 @@
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
+  justify-content: start;
 }
 
 .secnavbar ul li {
-  margin: 0 15px;
+  margin: 0 3px;
 }
 
 .secnavbar ul li a {
   text-decoration: none;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   color: white !important;
+  background-color: #d397f8a8;
+  padding: 10px 8px;
+  border-radius: 3px;
 }
 
 .secnavbar ul li a:hover {
@@ -54,9 +58,10 @@
 @media (max-width: 767px) {
   .secnavbar.sticky,
   .secnavbar {
-    width: 90%;
+    width: 100%;
   }
   .secnavbar ul li a {
     font-size: 12px;
+    padding: 8px 1.5px;
   }
 }

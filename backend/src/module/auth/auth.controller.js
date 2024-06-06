@@ -37,7 +37,6 @@ export const confirmEmail = async (req, res) => {
   if (!decoded) {
     return res.status(404).json({ message: "invalid token" });
   }
-  console.log("pass");
   const user = await userModel.findOneAndUpdate(
     { email: decoded.email, confirmEmail: false },
     { confirmEmail: true }
