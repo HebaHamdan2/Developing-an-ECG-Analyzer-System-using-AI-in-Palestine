@@ -13,13 +13,13 @@ export default function SignUp() {
   let [loading, setLoading] = useState(false);
 
   const schema = Yup.object({
-    userName: Yup.string().required("User Name is required").min(3, "min is 3 characters").max(20, "max is 20 characters"),
-    email: Yup.string().required("Email is required").email("not valid email"),
+    userName: Yup.string().required("Username is required").min(3, "Username must be at least 3 characters long").max(20, "Username must be at most 20 characters long"),
+    email: Yup.string().required("Email is required").email("Please enter a valid email").min(8,"Email must be at least 8 characters long"),
     password: Yup.string().required("Password is required").matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+      "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character"
     ),
-    confirmPassword: Yup.string().required("Confirm Password").oneOf([Yup.ref('password')], "mismatch passwords"),
+    confirmPassword: Yup.string().required("Confirm Password is required").oneOf([Yup.ref('password')], "Confirm password must match the password"),
     role: Yup.string().required("Please choose your role!")
   });
 

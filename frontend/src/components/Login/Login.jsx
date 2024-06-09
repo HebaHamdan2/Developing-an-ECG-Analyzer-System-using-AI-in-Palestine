@@ -14,7 +14,7 @@ export default function Login() {
   let { setAuthUser } = useContext(AuthContext)
   let [loading, setLoading] = useState(false);
   const schema = Yup.object({
-    email: Yup.string().required("Email is required").email("not valid email"),
+    email: Yup.string().required("Email is required").email("Please enter a valid email"),
     password: Yup.string().required("Password is required")
   })
   let formik = useFormik({

@@ -25,7 +25,7 @@ export default function FileUpload() {
   useEffect(() => {
     setRole(jwtDecode(authUser.token, "login123").role);
     if (isTokenExpired(authUser.token)) { logOut() }
-  }, []);
+     }, []);
 
   function Showalert() {
     Swal.fire({
@@ -103,7 +103,7 @@ export default function FileUpload() {
         }
       };
 
-      const response = await axios.post("/image/insertImage", formData, config);
+      const response = await axios.post("/image/insertImage", formData,{headers:{Authorization:`ECG__${authUser.token}`}}, config);
 
 
       stopAnimatingProgress();
