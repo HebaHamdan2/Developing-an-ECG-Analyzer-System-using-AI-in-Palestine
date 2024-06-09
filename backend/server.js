@@ -9,7 +9,7 @@ import { initApp } from './src/module/app.router.js';
 const app = express();
 // Define the port on which the server will run, default to 3000 if not specified in environment variables
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 // Initialize the application with routes and middleware
 
 initApp(app, express);

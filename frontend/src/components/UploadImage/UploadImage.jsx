@@ -103,9 +103,8 @@ export default function FileUpload() {
         }
       };
 
-      const response = await axios.post("/image/insertImage", formData,{headers:{Authorization:`ECG__${authUser.token}`}}, config);
-
-
+      const response = await axios.post("/image/insertImage",{headers:{Authorization:`ECG__${authUser.token}`}},formData);
+    
       stopAnimatingProgress();
       setResult(response.data.prediction);
 

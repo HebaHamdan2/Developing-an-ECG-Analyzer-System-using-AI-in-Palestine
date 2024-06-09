@@ -10,7 +10,7 @@ sys.stdin.reconfigure(encoding='utf-8')
 sys.stdout.reconfigure(encoding='utf-8')
 
 # Load the saved TensorFlow model from the specified path
-model = tf.keras.models.load_model('C:/Users/PC/Desktop/ECG_Analyzer/python/ECG-train.h5')
+model = tf.keras.models.load_model('C:/Users/Lenovo/OneDrive/Desktop/GraduationProj/backend/python/model/ECG-train.h5')
 
 # Define the class labels that correspond to the model's output classes
 class_labels = [

@@ -25,7 +25,7 @@ export const callPredict = async (imagePath) => {
         console.log("Image path:", imagePath);
 
         // Spawn a new Python process to run the specified script with the image path as an argument
-        const python = spawn('python', ["C:/Users/PC/Desktop/ECG_Analyzer/python/app.py", imagePath]);
+        const python = spawn('python', ["C:/Users/Lenovo/OneDrive/Desktop/GraduationProj/backend/python/app.py", imagePath]);
         let prediction = '';
 
         // Event listener for data from the Python process's stdout
