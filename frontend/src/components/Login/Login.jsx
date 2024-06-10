@@ -11,8 +11,9 @@ import Loading from '../Loading/Loading.jsx'
 import { jwtDecode } from "jwt-decode";
 
 export default function Login() {
-  let { setAuthUser, authUser } = useContext(AuthContext)
+  let { setAuthUser} = useContext(AuthContext)
   let [loading, setLoading] = useState(false);
+  let {username,setUsername}=useState('');
   const schema = Yup.object({
     email: Yup.string().required("Email is required").email("Please enter a valid email"),
     password: Yup.string().required("Password is required")
@@ -28,7 +29,6 @@ export default function Login() {
   async function login(values) {
     setLoading(true)
     try {
-
       const { data } = await axios.post("/auth/signin", values).catch((err) => {
         toast.error(err.response.data.message)
       })
@@ -36,9 +36,6 @@ export default function Login() {
         localStorage.setItem("user", JSON.stringify(data))
         setAuthUser(data)
         navigate("../uploadImage")
-        toast(`Hello, ${jwtDecode(authUser.token, "login123").userName}!`, {
-          icon: '👏',
-        });
       } else {
         toast.error(data.validationArray[0]);
       }
