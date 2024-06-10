@@ -14,10 +14,10 @@ model = tf.keras.models.load_model('C:/Users/Lenovo/OneDrive/Desktop/GraduationP
 
 # Define the class labels that correspond to the model's output classes
 class_labels = [
-    'Myocardial Infarction Patients',  # Class 0
-    'Patient that have abnormal heartbeat',  # Class 1
-    'Patient that have History of MI',  # Class 2
-    'Normal Person ECG Images'  # Class 3
+    'Myocardial Infarction ECG',  # Class 0
+    'Abnormal heartbeat ECG',  # Class 1
+    'History of Myocardial Infarction ECG',  # Class 2
+    'Normal Person ECG'  # Class 3
 ]
 
 # Function to predict the class of an image

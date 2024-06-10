@@ -36,7 +36,6 @@ export default function Login() {
         localStorage.setItem("user", JSON.stringify(data))
         setAuthUser(data)
         navigate("../uploadImage")
-        toast.success('Welcome!')
         toast(`Hello, ${jwtDecode(authUser.token, "login123").userName}!`, {
           icon: '👏',
         });
