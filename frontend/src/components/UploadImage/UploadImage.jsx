@@ -23,6 +23,10 @@ export default function FileUpload() {
   let navigate = useNavigate();
 
   useEffect(() => {
+    toast.success('Welcome!')
+    toast(`Hello, ${jwtDecode(authUser.token, "login123").userName}!`, {
+      icon: '👏',
+    });
     setRole(jwtDecode(authUser.token, "login123").role);
     if (isTokenExpired(authUser.token)) { logOut() }
      }, []);
@@ -102,12 +106,9 @@ export default function FileUpload() {
           currentProgress = progress;
         }
       };
-
-      const response = await axios.post("/image/insertImage",{headers:{Authorization:`ECG__${authUser.token}`}},formData);
-    
+      const response = await axios.post("/image/insertImage",formData,{headers:{Authorization:`ECG__${authUser.token}`}});
       stopAnimatingProgress();
       setResult(response.data.prediction);
-
       Swal.fire({
         title: 'Result!',
         text: response.data.prediction,

@@ -15,7 +15,9 @@ export default function SignUp() {
   const schema = Yup.object({
     userName: Yup.string().required("Username is required").min(3, "Username must be at least 3 characters long").max(20, "Username must be at most 20 characters long"),
     email: Yup.string().required("Email is required").email("Please enter a valid email").min(8,"Email must be at least 8 characters long"),
-    password: Yup.string().required("Password is required").matches(
+    password: Yup.string()
+    .required("Password is required")
+    .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
       "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character"
     ),
@@ -44,13 +46,18 @@ export default function SignUp() {
   async function register(values) {
     setLoading(true);
     try {
+    
       const { data } = await axios.post("/auth/signup", values).catch((err) => {
-        toast.error(err.response.data.message);
+        toast.error(err.response.data?.message);
+      if(err.response.data?.validationError[0].message){
+        toast.error(err.response.data?.validationError[0].message);}
       });
       if (data.message === "success") {
         navigate("../login");
       } else {
         toast.error(data.validationArray[0]);
+        
+        console.log(data);
       }
     } finally {
 

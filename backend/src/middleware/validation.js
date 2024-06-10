@@ -11,7 +11,7 @@ export const generalFields = {
     }),
 
     // Define a password validation schema
-    password: joi.string().required().pattern(new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')).messages({
+    password: joi.string().required().pattern(new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)).messages({
         'string.empty': "Password is required",         // Custom message for empty password
         'string.pattern.base': "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character"
     }),
