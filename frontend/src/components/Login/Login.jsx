@@ -8,10 +8,10 @@ import axios from 'axios'
 import { AuthContext } from '../../contexts/Auth.context.jsx'
 import toast from 'react-hot-toast'
 import Loading from '../Loading/Loading.jsx'
+import { jwtDecode } from "jwt-decode";
 
 export default function Login() {
-
-  let { setAuthUser } = useContext(AuthContext)
+  let { setAuthUser, authUser } = useContext(AuthContext)
   let [loading, setLoading] = useState(false);
   const schema = Yup.object({
     email: Yup.string().required("Email is required").email("Please enter a valid email"),
@@ -36,6 +36,10 @@ export default function Login() {
         localStorage.setItem("user", JSON.stringify(data))
         setAuthUser(data)
         navigate("../uploadImage")
+        toast.success('Welcome!')
+        toast(`Hello, ${jwtDecode(authUser.token, "login123").userName}!`, {
+          icon: '👏',
+        });
       } else {
         toast.error(data.validationArray[0]);
       }

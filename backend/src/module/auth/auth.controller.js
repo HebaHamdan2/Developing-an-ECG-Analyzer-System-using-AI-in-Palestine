@@ -94,18 +94,18 @@ export const signIn = async (req, res, next) => {
     // Find the user by email
     const user = await userModel.findOne({ email });
     if (!user) {
-        return res.status(400).json({ message: "data invalid" });
+        return res.status(400).json({ message: "Data invalid" });
     }
 
     // Check if the email is confirmed
     if (!user.confirmEmail) {
-        return res.status(400).json({ message: "plz confirm your email" });
+        return res.status(400).json({ message: "Please confirm your email first!" });
     }
 
     // Compare the provided password with the stored hashed password
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-        return res.status(400).json({ message: "invalid password" });
+        return res.status(400).json({ message: "Invalid password" });
     }
 
     // Generate a JWT and a refresh token

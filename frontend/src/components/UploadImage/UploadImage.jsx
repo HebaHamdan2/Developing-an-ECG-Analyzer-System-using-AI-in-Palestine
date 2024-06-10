@@ -23,10 +23,6 @@ export default function FileUpload() {
   let navigate = useNavigate();
 
   useEffect(() => {
-    toast.success('Welcome!')
-    toast(`Hello, ${jwtDecode(authUser.token, "login123").userName}!`, {
-      icon: '👏',
-    });
     setRole(jwtDecode(authUser.token, "login123").role);
     if (isTokenExpired(authUser.token)) { logOut() }
      }, []);
