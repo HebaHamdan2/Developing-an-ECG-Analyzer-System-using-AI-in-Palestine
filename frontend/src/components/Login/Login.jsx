@@ -8,12 +8,9 @@ import axios from 'axios'
 import { AuthContext } from '../../contexts/Auth.context.jsx'
 import toast from 'react-hot-toast'
 import Loading from '../Loading/Loading.jsx'
-import { jwtDecode } from "jwt-decode";
-
 export default function Login() {
   let { setAuthUser} = useContext(AuthContext)
   let [loading, setLoading] = useState(false);
-  let {username,setUsername}=useState('');
   const schema = Yup.object({
     email: Yup.string().required("Email is required").email("Please enter a valid email"),
     password: Yup.string().required("Password is required")
@@ -97,6 +94,7 @@ export default function Login() {
 
                             />
                           </div>
+                          {formik.errors.password && formik.touched.password ? <div className='small text-danger'>{formik.errors.password}</div> : null}
                         </div>
                         <div className={style.textForg} >
                           <Link to="../forgetPassword" className={style.forgot}>Forgot your password ?</Link>

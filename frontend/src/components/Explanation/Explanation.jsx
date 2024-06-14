@@ -6,8 +6,8 @@ import { Carousel } from 'react-responsive-carousel';
 import './Explanation.css'
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Secondary from '../SecondNav/Secondary.jsx';
-import { isTokenExpired } from '../../hooks/isTokenExpired.js';
 import { AuthContext } from '../../contexts/Auth.context.jsx';
+import { isTokenExpired } from '../checkExpiredToken/isTokenExpired.js';
 export default function Explanation() {
   const [loading, setLoading] = useState(false)
   let { authUser } = useContext(AuthContext)

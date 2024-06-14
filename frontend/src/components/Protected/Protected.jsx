@@ -2,7 +2,7 @@ import { jwtDecode } from 'jwt-decode';
 import React, { useContext } from 'react'
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/Auth.context.jsx';
-import { isTokenExpired } from '../../hooks/isTokenExpired.js';
+import { isTokenExpired } from '../checkExpiredToken/isTokenExpired.js';
 
 export default function Protected({ children, who }) {
   let { authUser } = useContext(AuthContext)

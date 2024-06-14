@@ -8,7 +8,7 @@ import { AuthContext } from "../../contexts/Auth.context.jsx";
 import { jwtDecode } from "jwt-decode";
 import Swal from "sweetalert2";
 import Loading from "../Loading/Loading.jsx";
-import { isTokenExpired } from "../../hooks/isTokenExpired.js";
+import { isTokenExpired } from "../checkExpiredToken/isTokenExpired.js";
 
 export default function FileUpload() {
   const [loading, setLoading] = useState(false);
@@ -25,13 +25,13 @@ export default function FileUpload() {
   useEffect(() => {
     setRole(jwtDecode(authUser.token, "login123").role);
     if (isTokenExpired(authUser.token)) { logOut() }
-     }, [authUser.token]);
+  }, [authUser.token]);
 
-useEffect(()=>{
-  toast(`Hello, ${jwtDecode(authUser.token, "login123").userName}!`, {
-    icon: '👏',
-  });
-},[])
+  useEffect(() => {
+    toast(`Hello, ${jwtDecode(authUser.token, "login123").userName}!`, {
+      icon: '👏',
+    });
+  }, [])
   function Showalert() {
     Swal.fire({
       title: 'Result!',
@@ -107,7 +107,7 @@ useEffect(()=>{
           currentProgress = progress;
         }
       };
-      const response = await axios.post("/image/insertImage",formData,{headers:{Authorization:`ECG__${authUser.token}`}});
+      const response = await axios.post("/image/insertImage", formData, { headers: { Authorization: `ECG__${authUser.token}` } });
       stopAnimatingProgress();
       setResult(response.data.prediction);
       Swal.fire({

@@ -1,16 +1,41 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import style from './ForgetPass.module.css'
-import useSendCode from '../../hooks/useSendCode.js'
 import Loading from '../Loading/Loading.jsx'
+import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
+import toast from 'react-hot-toast';
+import { useFormik } from 'formik';
 export default function ForgetPassword() {
-  const [inputs, setInputs] = useState({
-    email: ''
+  const [loading, setLoading] = useState(false);
+  let navigate = useNavigate();
+  const schema = Yup.object({
+    email: Yup.string().required("Email is required").email("Please enter a valid email").min(8, "Email must be at least 8 characters long"),
   })
-  const { loading, sendCode } = useSendCode()
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await sendCode(inputs);
+  let formik = useFormik({
+    initialValues: {
+      email: ''
+    }, validationSchema: schema,
+    onSubmit: SendCode,
+  })
+  async function SendCode(values) {
+    setLoading(true)
+    try {
+      const { data } = await axios
+        .patch("/auth/sendCode", values).catch((err) => {
+          toast.error(err.response.data?.message);
+          if (err.response.data?.validationError[0].message) {
+            toast.error(err.response.data?.validationError[0].message);
+          }
+        }); if (data.message === "success") {
+          navigate("../changePassword");
+        } else {
+        toast.error(data.validationArray[0]);
+      }
+    } finally {
+      setLoading(false);
+    }
   }
   return (
     <>
@@ -36,17 +61,25 @@ export default function ForgetPassword() {
                   <div className="cardLog">
                     <div className="cardLog-body">
                       <div >
-                        <form onSubmit={handleSubmit} >
+                        <form onSubmit={formik.handleSubmit} >
 
                           <div className="mb-3">
                             <label className="form-label">Email</label>
                             <div className="input-group mb-3 bg-soft-light rounded-3">
-                              <input type="email" id="email" className="form-control  border-light bg-soft-light" placeholder="enter your email to send code" aria-label="Enter Email" aria-describedby="basic-addon3"
-                                value={inputs.email}
-                                onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
-
+                              <input
+                                type="email"
+                                id="email"
+                                placeholder="enter your email"
+                                aria-label="Enter Email"
+                                aria-describedby="basic-addon3"
+                                value={formik.values.email}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                name='email'
+                                className={`form-control border-light bg-soft-light ${formik.errors.email && formik.touched.email ? "is-invalid" : ""}`}
                               />
                             </div>
+                            {formik.errors.email && formik.touched.email ? <div className='small text-danger'>{formik.errors.email}</div> : null}
                           </div>
 
 

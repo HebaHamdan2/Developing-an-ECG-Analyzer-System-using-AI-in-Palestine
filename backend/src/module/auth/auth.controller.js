@@ -79,9 +79,10 @@ export const confirmEmail = async (req, res, next) => {
 
     // Update the user's confirmEmail field to true
     const user = await userModel.findOneAndUpdate({ email: decoded.email, confirmEmail: false }, { confirmEmail: true });
-    if (!user) {
-        return res.status(400).json({ message: "invalid verify your email or your email is verified" });
-    }
+  if (!user) {
+        return res.redirect("http://127.0.0.1:8000/login");
+      }
+
 
     // Respond with success message
     return res.status(200).json({ message: "success" });
@@ -108,12 +109,10 @@ export const signIn = async (req, res, next) => {
         return res.status(400).json({ message: "Invalid password" });
     }
 
-    // Generate a JWT and a refresh token
+    // Generate a JWT token
     const token = jwt.sign({ id: user._id, role: user.role ,userName:user.userName}, process.env.LOGINSECRET, { expiresIn: '24h' });
-    const refreshToken = jwt.sign({ id: user._id, role: user.role }, process.env.LOGINSECRET, { expiresIn: 60 * 60 * 24 * 30 });
-
-    // Respond with success message, token, and refresh token
-    return res.status(200).json({ message: "success", token, refreshToken });
+    // Respond with success message, token
+    return res.status(200).json({ message: "success", token });
 }
 
 // Function to handle sending a verification code
@@ -164,12 +163,6 @@ export const forgotPassword = async (req, res, next) => {
     // Check if the provided code matches the stored sendCode
     if (user.sendCode != code) {
         return res.status(400).json({ message: "invalid code" });
-    }
-
-    // Check if the new password is the same as the current password
-    let match = await bcrypt.compare(password, user.password);
-    if (match) {
-        return res.status(409).json({ message: "same password" });
     }
 
     // Hash the new password

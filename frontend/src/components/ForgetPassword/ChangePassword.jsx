@@ -1,19 +1,46 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import style from './ForgetPass.module.css'
-import useChangePassword from '../../hooks/useChangePasswoed.js'
 import Loading from '../Loading/Loading.jsx'
+import { useFormik } from 'formik'
+import * as Yup from "yup"
+import toast from 'react-hot-toast'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 export default function ChangePassword() {
-
-  const [inputs, setInputs] = useState({
-    email: '',
-    password: ''
+  let navigate = useNavigate();
+  let [loading, setLoading] = useState(false);
+  const schema = Yup.object({
+    code:Yup.string().required("Verification Code is required"),
+    email: Yup.string().required("Email is required").email("Please enter a valid email").min(8,"Email must be at least 8 characters long"),
+    password: Yup.string().required("Password is required").matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+      "Password must contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character"
+    ),
+    });
+  let formik = useFormik({
+    initialValues: {
+      code:'',
+      email: '',
+      password: ''
+    }, validationSchema: schema,
+    onSubmit: changePassword,
   })
-  const { loading, changePassword } = useChangePassword()
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await changePassword(inputs);
-
+  async function changePassword(values) {
+    setLoading(true)
+    try {
+      const { data } = await axios.patch("/auth/forgotPassword", values).catch((err) => {
+        toast.error(err.response.data?.message);
+      if(err.response.data?.validationError[0].message){
+        toast.error(err.response.data?.validationError[0].message);}
+      });  if (data.message === "success") {
+        navigate("../login");
+      } else {
+        toast.error(data.validationArray[0]);
+      }
+    } finally {
+      setLoading(false);
+    }
   }
   return (
     <>
@@ -38,36 +65,57 @@ export default function ChangePassword() {
                   <div className="cardLog">
                     <div className="cardLog-body">
                       <div >
-                        <form onSubmit={handleSubmit}>
+                        <form  onSubmit={formik.handleSubmit}>
                           <div className="mb-3 ">
                             <label className="form-label">Verification Code</label>
                             <div className="input-group mb-3 bg-soft-light rounded-3">
-                              <input type="text" id="code" className="form-control  border-light bg-soft-light" placeholder="enter verification code" aria-label="Enter code" aria-describedby="basic-addon3"
-                                value={inputs.code}
-                                onChange={(e) => setInputs({ ...inputs, code: e.target.value })}
-
+                              <input type="text" id="code" placeholder="enter verification code" aria-label="Enter code" aria-describedby="basic-addon3"
+                                 value={formik.values.code}
+                                 onChange={formik.handleChange}
+                                 onBlur={formik.handleBlur}
+                                 name='code'
+                                 className={`form-control border-light bg-soft-light ${formik.errors.code && formik.touched.code ? "is-invalid" : ""}`}
+             
                               />
                             </div>
+                            {formik.errors.code && formik.touched.code ? <div className='small text-danger'>{formik.errors.code}</div> : null}
                           </div>
                           <div className="mb-3">
                             <label className="form-label">Email</label>
                             <div className="input-group mb-3 bg-soft-light rounded-3">
-                              <input type="email" id="email" className="form-control  border-light bg-soft-light" placeholder="enter your email" aria-label="Enter Email" aria-describedby="basic-addon4"
-                                value={inputs.email}
-                                onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
-
-                              />
-                            </div>
+                            <input
+                              type="email"
+                              id="email"
+                              placeholder="enter your email"
+                              aria-label="Enter Email"
+                              aria-describedby="basic-addon3"
+                              value={formik.values.email}
+                              onChange={formik.handleChange}
+                              onBlur={formik.handleBlur}
+                              name='email'
+                              className={`form-control border-light bg-soft-light ${formik.errors.email && formik.touched.email ? "is-invalid" : ""}`}
+                            />
                           </div>
+                          {formik.errors.email && formik.touched.email ? <div className='small text-danger'>{formik.errors.email}</div> : null}
+                            </div>
                           <div className="mb-3">
                             <label className="form-label">New Password</label>
                             <div className="input-group mb-3 bg-soft-light rounded-3">
-                              <input type="password" id="Password" className="form-control  border-light bg-soft-light" placeholder="enter your new password" aria-label="Enter Password" aria-describedby="basic-addon4"
-                                value={inputs.password}
-                                onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
-
+                            <input
+                              type="password"
+                              id="password"
+                              placeholder="enter password"
+                              aria-label="Enter Password"
+                              aria-describedby="basic-addon4"
+                              value={formik.values.password}
+                              onChange={formik.handleChange}
+                              onBlur={formik.handleBlur}
+                              name='password' 
+                                className={`form-control border-light bg-soft-light ${formik.errors.password && formik.touched.password ? "is-invalid" : ""}`}
                               />
-                            </div>
+                          </div>
+                          {formik.errors.password && formik.touched.password ? <div className='small text-danger'>{formik.errors.password}</div> : null}
+          
                           </div>
 
 
@@ -92,4 +140,5 @@ export default function ChangePassword() {
 
     </>
   )
+
 }
