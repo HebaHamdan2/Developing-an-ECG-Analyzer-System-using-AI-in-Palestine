@@ -16,7 +16,7 @@ export const signUp = async (req, res, next) => {
     // Check if the email already exists in the database
     const user = await userModel.findOne({ email });
     if (user) {
-        return next(new Error("email already exists", { cause: 409 }));
+        return next(new Error("email already exists", { status: 409 }));
     }
 
     // Hash the password using bcrypt
@@ -74,18 +74,15 @@ export const confirmEmail = async (req, res, next) => {
     // Verify the token and decode the payload
     const decoded = jwt.verify(token, process.env.CONFIRMEMAILSECRET);
     if (!decoded) {
-        return next(new Error("invalid token", { cause: 404 }));
+        return next(new Error("invalid token", { status: 404 }));
     }
 
     // Update the user's confirmEmail field to true
     const user = await userModel.findOneAndUpdate({ email: decoded.email, confirmEmail: false }, { confirmEmail: true });
   if (!user) {
-        return res.redirect("http://127.0.0.1:8000/login");
+    return res.status(400).json({ message: "invalid verify your email or your email is verified" });
       }
-
-
-    // Respond with success message
-    return res.status(200).json({ message: "success" });
+      return res.redirect("http://localhost:3000/login");
 }
 
 // Function to handle user signin

@@ -14,5 +14,5 @@ export const asyncHandler = (fn) => {
 export const globalErrorHandler = (err, req, res, next) => {
     // Return a response with the error status code or 500 (if not specified)
     // and a JSON object containing the error message
-    return res.status(err.cause || 500).json({ message: err.message });
+    return res.status(err.status || 500).json({ message: err.message });
 };

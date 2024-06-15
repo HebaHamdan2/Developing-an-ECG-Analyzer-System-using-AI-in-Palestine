@@ -107,7 +107,9 @@ export default function FileUpload() {
           currentProgress = progress;
         }
       };
-      const response = await axios.post("/image/insertImage", formData, { headers: { Authorization: `ECG__${authUser.token}` } });
+      const response = await axios.post("/image/insertImage", formData, { headers: { Authorization: `ECG__${authUser.token}` } }).catch((err) => {
+        toast.error(err.response.data.message)
+      });
       stopAnimatingProgress();
       setResult(response.data.prediction);
       Swal.fire({
@@ -118,11 +120,9 @@ export default function FileUpload() {
 
       setUploadStatus("done");
 
-
     } catch (err) {
       clearInterval(animateProgress);
       setUploadStatus("select");
-      toast.error(err.response.data.msg);
     }
   };
 
