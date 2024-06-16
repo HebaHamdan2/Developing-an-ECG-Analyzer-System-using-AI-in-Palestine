@@ -9,7 +9,7 @@
 }
 
 .form-check-label {
-  cursor: pointer; /* Change cursor to pointer for better UX */
+  cursor: pointer;
   font-size: 20px;
 }
 

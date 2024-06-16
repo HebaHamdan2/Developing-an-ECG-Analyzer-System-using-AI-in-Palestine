@@ -27,11 +27,6 @@ export default function FileUpload() {
     if (isTokenExpired(authUser.token)) { logOut() }
   }, [authUser.token]);
 
-  useEffect(() => {
-    toast(`Hello, ${jwtDecode(authUser.token, "login123").userName}!`, {
-      icon: '👏',
-    });
-  }, [])
   function Showalert() {
     Swal.fire({
       title: 'Result!',
