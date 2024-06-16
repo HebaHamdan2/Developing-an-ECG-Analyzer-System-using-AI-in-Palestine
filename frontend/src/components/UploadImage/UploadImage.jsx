@@ -20,6 +20,7 @@ export default function FileUpload() {
   const [uploadStatus, setUploadStatus] = useState("select");
   const [result, setResult] = useState('');
   const [Role, setRole] = useState('');
+  const abortControllerRef = useRef(null);  // New ref for AbortController
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -60,6 +61,9 @@ export default function FileUpload() {
     setResult('');
     setProgress(0);
     setUploadStatus("select");
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();  // Abort the ongoing request
+    }
   };
 
   const handleUpload = async () => {
@@ -68,7 +72,7 @@ export default function FileUpload() {
       return;
     }
 
-    let animateProgress;  // Declare animateProgress at the top
+    let animateProgress;
 
     try {
       setUploadStatus("uploading");
@@ -95,16 +99,24 @@ export default function FileUpload() {
 
       startAnimatingProgress();
 
+      abortControllerRef.current = new AbortController();  // Create a new AbortController
+
       const config = {
+        signal: abortControllerRef.current.signal,  // Attach the signal to the Axios config
         onUploadProgress: (progressEvent) => {
           const progress = Math.round((progressEvent.loaded * 50) / progressEvent.total);
           setProgress(progress);
           currentProgress = progress;
-        }
+        },
       };
-      const response = await axios.post("/image/insertImage", formData, { headers: { Authorization: `ECG__${authUser.token}` } }).catch((err) => {
-        toast.error(err.response.data.message)
+
+      const response = await axios.post("/image/insertImage", formData, { 
+        headers: { Authorization: `ECG__${authUser.token}` },
+        ...config,
+      }).catch((err) => {
+        toast.error(err.response.data.message);
       });
+
       stopAnimatingProgress();
       setResult(response.data.prediction);
       Swal.fire({
