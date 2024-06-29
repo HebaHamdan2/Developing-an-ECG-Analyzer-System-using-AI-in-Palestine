@@ -19,7 +19,6 @@ class_labels = [
     'History of Myocardial Infarction ECG',  # Class 2
     'Normal Person ECG'  # Class 3
 ]
-
 # Function to predict the class of an image
 def predict_class(img_path):
     # Load the image from the specified path and resize it to the expected input size for the model
