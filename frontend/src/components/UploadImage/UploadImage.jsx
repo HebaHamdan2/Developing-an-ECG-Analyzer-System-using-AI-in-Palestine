@@ -32,14 +32,14 @@ export default function FileUpload() {
     Swal.fire({
       title: 'Result!',
       text: result,
-      showConfirmButton: false,
+      showConfirmButton: false, 
     });
   }
 
   const handleFileChange = (event) => {
     if (event.target.files && event.target.files.length > 0) {
-      setSelectedFile(URL.createObjectURL(event.target.files[0]));
-      setData(event.target.files[0]);
+      setSelectedFile(URL.createObjectURL(event.target.files[0]));//to preview
+      setData(event.target.files[0]);//for backend
     }
   };
 
