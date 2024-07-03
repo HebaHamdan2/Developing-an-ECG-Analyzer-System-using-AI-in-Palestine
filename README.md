@@ -69,7 +69,7 @@ These features ensure that the application provides tailored functionality based
   - **Cross-Origin Resource Sharing (CORS):** Implemented using the `cors` package to handle cross-origin requests.
 
 - **Frontend:**
-  - **Framework:** React.js
+  - **Library**: React.js
   - **Form Management and Validation:** Utilized `formik` for form handling and `yup` for schema validation prior to backend submission.
   - **SEO:** Managed with `react-helmet` for controlling meta tags and improving search engine optimization.
   - **Notifications:** Implemented with `react-hot-toast` for displaying real-time errors and messages to users.
