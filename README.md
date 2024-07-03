@@ -54,7 +54,7 @@ These features ensure that the application provides tailored functionality based
 - **Deep Learning Model:**
   - **Model:** ResNet50
   - **Training:** The model is trained on a dataset divided into 70% training, 10% validation, and 20% testing.
-  - **Image Preprocessing:** Conducted using Python and Jupyter Notebook, achieving an accuracy of 94.84% and a loss of 24.55% after extensive experimentation.
+  - **Image Preprocessing:** Conducted using Python and Jupyter Notebook, achieving an accuracy of **94.84%** and a loss of **24.55%** after extensive experimentation.
 
 - **Backend:**
   - **Framework:** Node.js with Express.js
