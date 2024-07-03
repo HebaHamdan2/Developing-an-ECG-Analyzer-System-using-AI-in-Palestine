@@ -1,5 +1,6 @@
 # Overview
 The ECG Analyzer is a web application that predicts heart diseases from uploaded electrocardiogram images using ResNet50, a deep learning model with **94.84%** accuracy and **24.55%** loss. It enhances cardiac diagnostics for healthcare professionals and offers a reliable tool for medical students to analyze ECG data.
+
 ![Project Screenshot](https://github.com/HebaHamdan2/DEVELOPING-AN-ECG-ANALYZER-SYSTEM-USING-AI-IN-PALESTINE/blob/main/frontend/public/assets/logo2-removebg-preview.png)
 
 ## Dataset
