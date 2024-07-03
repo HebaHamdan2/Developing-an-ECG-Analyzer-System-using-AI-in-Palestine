@@ -25,10 +25,12 @@ You can access the dataset [here](https://data.mendeley.com/datasets/gwbz3fsgp8/
 
 - **Role-Based Access:**
   - **Healthcare Professionals:** 
-    - **Diagnosis:** Ability to log in and receive diagnoses for uploaded ECG images.
+    - **Diagnosis:** Ability to log in, access the upload page, and receive diagnoses for uploaded ECG images.
+    - **Access:** Can only access the upload page for image analysis.
   - **Medical Students:** 
     - **Diagnosis:** Similar functionality as healthcare professionals for uploading ECG images and receiving diagnoses.
-    - **Educational Resources:** Access to an additional page that explains how to read and interpret ECG images for the four categorized dataset classes.
+    - **Educational Resources:** Authorized to access an additional page with explanations on how to read and interpret ECG images.
+    - **Access:** Can view both the upload page and the educational explanation page.
 
 - **ECG Image Upload:**
   - **Upload Page:** Allows users to upload ECG images for analysis.
@@ -40,6 +42,9 @@ You can access the dataset [here](https://data.mendeley.com/datasets/gwbz3fsgp8/
     - **ECG Images of Patients with Abnormal Heartbeat**
     - **ECG Images of Patients with a History of MI (Myocardial Infarction)**
     - **Normal Person ECG Images**
+  - **Restricted Access:** Only accessible to medical students.
 
-These features ensure that the application serves as both a diagnostic tool and an educational resource, catering to both healthcare professionals and medical students while supporting specific image formats.
+- **Error Handling:**
+  - **Page Not Found:** Proper error handling for non-existent pages to enhance user experience.
 
+These features ensure that the application provides tailored functionality based on user roles, supports specific image formats, and includes comprehensive error handling.
