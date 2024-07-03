@@ -3,7 +3,7 @@ The ECG Analyzer is a web application that predicts heart diseases from uploaded
 
 ![Project Screenshot](https://github.com/HebaHamdan2/DEVELOPING-AN-ECG-ANALYZER-SYSTEM-USING-AI-IN-PALESTINE/blob/main/frontend/public/assets/logo2-removebg-preview.png)
 
-## Dataset
+# Dataset
 
 The dataset used in this project is the **Ch. Pervaiz Elahi Institute of Cardiology Multan Dataset** (Khan & Hussain, 2021). 
 It contains a total of 928 images categorized into four classes:
@@ -16,7 +16,7 @@ This diverse dataset ensures that the model can effectively distinguish between 
 
 You can access the dataset [here](https://data.mendeley.com/datasets/gwbz3fsgp8/2).
 
-## Features
+# Features
 
 - **User Authentication:**
   - **Sign Up:** Users can create a new account.
@@ -49,7 +49,7 @@ You can access the dataset [here](https://data.mendeley.com/datasets/gwbz3fsgp8/
 
 These features ensure that the application provides tailored functionality based on user roles, supports specific image formats, and includes comprehensive error handling.
 
-## Technologies
+# Technologies
 
 - **Deep Learning Model:**
   - **Model:** ResNet50
