@@ -82,4 +82,4 @@ This technology stack ensures a robust, secure, and efficient web application, p
 
 # Thesis
 For a detailed explanation of the project, including its objectives, methodologies, implementations, and results, please refer to the comprehensive thesis document available.
-[here](https://github.com/HebaHamdan2/DEVELOPING-AN-ECG-ANALYZER-SYSTEM-USING-AI-IN-PALESTINE/tree/main/thesis).
+[here](https://github.com/HebaHamdan2/DEVELOPING-AN-ECG-ANALYZER-SYSTEM-USING-AI-IN-PALESTINE/blob/main/thesis/GraduationProject-Thesis.pdf).
