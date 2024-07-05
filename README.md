@@ -81,5 +81,5 @@ These features ensure that the application provides tailored functionality based
 This technology stack ensures a robust, secure, and efficient web application, providing a seamless and professional experience for users.
 
 # Thesis
-For a detailed explanation of the project, including its objectives, methodologies, implementations, and results, please refer to the comprehensive thesis document available.
+For a detailed explanation of the project, including its objectives, methodologies, implementations, and results, please refer to the comprehensive thesis document available
 [here](https://github.com/HebaHamdan2/DEVELOPING-AN-ECG-ANALYZER-SYSTEM-USING-AI-IN-PALESTINE/blob/main/thesis/GraduationProject-Thesis.pdf).
